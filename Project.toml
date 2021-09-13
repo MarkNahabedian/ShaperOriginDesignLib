@@ -3,6 +3,12 @@ uuid = "919415d1-862b-4149-89fa-1b0f92b0b06b"
 authors = ["MarkNahabedian <naha@mit.edu> and contributors"]
 version = "0.1.0"
 
+[deps]
+NativeSVG = "5f95e7b2-fe07-4078-b4a7-f744f426795c"
+Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
+Unitful = "1986cc42-f94f-5a68-af5c-568840ba703d"
+UnitfulUS = "7dc9378f-8956-57ef-a780-aa31cc70ff3d"
+
 [compat]
 julia = "1"
 
