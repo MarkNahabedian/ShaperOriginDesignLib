@@ -16,4 +16,6 @@ using Test
     )
     @test d == @sprintf("M 0 0 h %3f v %3f z",
                         3 / 2.54, 4 / 2.54)
+    @test shaper_style_string(:on_line_cut) ==
+        "fill: none; stroke: gray; stroke-width: 0.01; opacity: 1.0;"
 end
