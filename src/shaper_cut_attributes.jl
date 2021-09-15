@@ -1,6 +1,6 @@
 # SVG line styles for the different kinds of cut paths of the Shaper Origin:
 
-using DataStructures
+using DataStructures: OrderedDict
 
 export shaper_cut_attributes, shaper_style_string
 
