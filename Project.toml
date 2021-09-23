@@ -1,7 +1,7 @@
 name = "ShaperOriginDesignLib"
 uuid = "919415d1-862b-4149-89fa-1b0f92b0b06b"
 authors = ["MarkNahabedian <naha@mit.edu> and contributors"]
-version = "0.1.0"
+version = "0.1.1-dev"
 
 [deps]
 DataStructures = "864edb3b-99cc-5e75-8d2d-829cb0a9cfe8"
