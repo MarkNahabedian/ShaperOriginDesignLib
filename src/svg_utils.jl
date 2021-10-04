@@ -49,7 +49,7 @@ function pathd(steps...)
 	    @printf(d, "%3f", token)
             needspace = true
 	else
-	    throw(Exception("Unsupported pathd token $token"))
+	    throw(ErrorException("Unsupported pathd token $token"))
 	end
     end
     for step in steps
