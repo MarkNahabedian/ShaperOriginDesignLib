@@ -1,5 +1,5 @@
 
-export svgval, pathd
+export svgval, SVG_UNITS, viewport_attributes, pathd
 
 
 """
@@ -14,6 +14,31 @@ end
 
 function svgval(x::Number)
     x
+end
+
+
+SVG_UNITS = Dict{Unitful.Units, String}(
+    u"cm" => "cm",
+    u"mm" => "mm",
+    u"inch" => "in"
+)
+
+
+"""
+    viewport_attributes(left, top, right, bottom)
+Return a named tuple of SVG attributes to be added to the SVG element.
+"""
+function viewport_attributes(left::Unitful.Length, top::Unitful.Length,
+                             right::Unitful.Length, bottom::Unitful.Length,
+                             to_units::Unitful.Units)
+    left, top, right, bottom = (x -> ustrip(to_units, x)).((left, top, right, bottom))
+    width = right - left
+    height = bottom - top
+    return (
+        viewBox = "$left $top $width $height",
+        width = "$width$(SVG_UNITS[to_units])",
+        height = "$height$(SVG_UNITS[to_units])"
+    )
 end
 
 

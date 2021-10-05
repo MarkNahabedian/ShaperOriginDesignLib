@@ -19,3 +19,11 @@ using Test
     @test shaper_style_string(:on_line_cut) ==
         "fill: none; stroke: gray; stroke-width: 0.01; opacity: 1.0;"
 end
+
+@testset "viewport_attributes" begin
+    left, top, right, bottom = (0.0u"inch", 0.0u"cm", 5.0u"inch", 2.54u"cm")
+    attrs = viewport_attributes(left, top, right, bottom, u"inch")
+    @test attrs.width == "5.0in"
+    @test attrs.height == "1.0in"
+    @test attrs.viewBox == "0.0 0.0 5.0 1.0"
+end
