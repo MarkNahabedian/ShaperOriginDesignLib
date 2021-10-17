@@ -12,7 +12,7 @@ UnitfulUS = "7dc9378f-8956-57ef-a780-aa31cc70ff3d"
 
 [compat]
 DataStructures = "0.18"
-NativeSVG = "0.1"
+NativeSVG = "0.1.0-naha"
 Unitful = "1"
 UnitfulUS = "0.2"
 julia = "1"
