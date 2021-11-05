@@ -22,3 +22,13 @@ found
 [here](https://github.com/MarkNahabedian/DesignWithSVG/tree/master/floor_drain).
 Click through the link there to run the notebook.  It takes some time
 for the notebook to load, so be patient with it.
+
+
+## My Example Projects that use this
+
+[floordrain cover plate](https://github.com/MarkNahabedian/DesignWithSVG/tree/master/floor_drain)
+
+[End Stub Check Register Box](https://github.com/MarkNahabedian/DesignWithSVG/tree/master/end_stub_check_register_box)
+
+[a Mounting Bracket for some Solar Lights](https://github.com/MarkNahabedian/DesignWithSVG/tree/master/solar_lights_bracket)
+
