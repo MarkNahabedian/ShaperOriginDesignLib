@@ -1,5 +1,5 @@
 
-export svgval, SVG_UNITS, viewport_attributes, pathd
+export svgval, SVG_UNITS, namespace_attributes, viewport_attributes, pathd
 
 
 """
@@ -22,6 +22,20 @@ SVG_UNITS = Dict{Unitful.Units, String}(
     u"mm" => "mm",
     u"inch" => "in"
 )
+
+
+"""
+    namespace_attributes()
+
+Return a vector of XML namestpace declaration attributes to be applied
+to the root SVG element.
+"""
+function namespace_attributes()
+    return [
+        :xmlns => SVG_NAMESPACE,
+        Symbol("xmlns:shaper") => SHAPER_NAMESPACE
+    ]
+end
 
 
 """

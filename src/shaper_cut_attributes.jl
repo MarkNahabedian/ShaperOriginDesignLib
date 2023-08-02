@@ -2,7 +2,7 @@
 
 using DataStructures: OrderedDict
 
-export shaper_cut_attributes, shaper_style_string
+export shaper_cut_attributes, shaper_style_string, shaper_cut_depth
 
 shaper_cut_attributes = Dict(
 	:inside_cut => OrderedDict(
@@ -45,3 +45,15 @@ function shaper_style_string(cut_type::Symbol)
     end
     String(take!(io))
 end
+
+
+"""
+    shaper_cut_depth(depth)
+
+Return an XML element attribute (as a Pair{String, String}) to control
+the depth of a pocket cut.
+"""
+function shaper_cut_depth(depth)
+    "shaper:cutDepth" => "$(svgval(depth))"
+end
+
