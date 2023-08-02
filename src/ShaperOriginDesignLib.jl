@@ -3,6 +3,8 @@ module ShaperOriginDesignLib
 using Printf
 using Unitful
 using UnitfulUS
+using XML
+using TabletWeaving: elt
 
 export SVG_NAMESPACE
 
