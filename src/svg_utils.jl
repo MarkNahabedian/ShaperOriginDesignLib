@@ -26,6 +26,7 @@ SVG_UNITS = Dict{Unitful.Units, String}(
 
 """
     viewport_attributes(left, top, right, bottom)
+
 Return a named tuple of SVG attributes to be added to the SVG element.
 """
 function viewport_attributes(left::Unitful.Length, top::Unitful.Length,
@@ -44,6 +45,7 @@ end
 
 """
     pathd(steps...)
+
 `pathd` is a convenience function for generating an SVG `path` element.
 Each step is an array of a path step letter, e.g. `M`, `L`, `h` and
 the parameters for that step.
