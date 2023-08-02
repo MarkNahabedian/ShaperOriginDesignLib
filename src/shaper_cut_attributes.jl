@@ -22,12 +22,6 @@ shaper_cut_attributes = Dict(
 		"stroke-width" => "0.01",
 		"opacity" => "1.0"
 	),
-	:on_line_cut => OrderedDict(
-		"fill" => "none",
-		"stroke" => "gray",
-		"stroke-width" => "0.01",
-		"opacity" => "1.0"
-	),
 	:pocket_cut => OrderedDict(
 		"fill" => "gray",
 		"stroke" => "none",
