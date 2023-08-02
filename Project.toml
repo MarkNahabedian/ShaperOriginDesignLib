@@ -6,6 +6,7 @@ version = "0.2.0"
 [deps]
 DataStructures = "864edb3b-99cc-5e75-8d2d-829cb0a9cfe8"
 Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
+TabletWeaving = "562db2e1-a68d-468c-8704-31bf85beff7e"
 Unitful = "1986cc42-f94f-5a68-af5c-568840ba703d"
 UnitfulUS = "7dc9378f-8956-57ef-a780-aa31cc70ff3d"
 XML = "72c71f33-b9b6-44de-8c94-c961784809e2"
