@@ -4,8 +4,12 @@
 using Markdown
 using InteractiveUtils
 
+# ╔═╡ 5eaed644-a54f-4971-a434-8467e3aff551
+using Pkg
+
 # ╔═╡ 8205ca1e-317b-11ee-3513-4b483fcd6bfb
 begin
+	using Markdown
 	using PlutoUI
 	using XML
 	using Unitful
@@ -13,6 +17,56 @@ begin
 	using ShaperOriginDesignLib
 	using TabletWeaving: elt
 end
+
+# ╔═╡ 750fd64b-c48c-4c2e-a7be-7b3cd9e97f44
+names(ShaperOriginDesignLib)
+
+# ╔═╡ 6db7b6d4-4488-462b-9f8a-d688f4494515
+propertynames(ShaperOriginDesignLib)
+
+# ╔═╡ 57a596f2-6aac-4295-a1e7-85830014cc0f
+md"""
+# Triangular Nightstands for Pines Inn Room 6
+"""
+
+# ╔═╡ 80ebfc5c-6228-47c9-9bce-f5a6f3a0f0fa
+# Presentation parameters
+begin
+	SVG_MARGIN = 0.5u"inch"
+end
+
+# ╔═╡ 81182448-2d85-4dc4-bd91-a25841d794d2
+#Nightstand measurements
+begin
+	# The bed is 27" high, so the table should be about that height
+	HEIGHT = 27u"inch"
+
+	# Maximum hypotenuse length is 32"
+	# Why didn't I measure the distance of the bed from the wall?
+	TRIANGLE_LEG_DISTANCE = 20u"inch"
+end
+
+# ╔═╡ 9f89c8a3-2f0b-4890-bb79-8c0944424f55
+md"""
+## Layout/Plan
+"""
+
+# ╔═╡ cc7d079e-b59f-4d88-8f49-9b4293807905
+begin
+	elt("svg",
+		namespace_attributes()...,
+		viewport_attributes(
+			- SVG_MARGIN,
+			- SVG_MARGIN,
+			TRIANGLE_LEG_DISTANCE + SVG_MARGIN,
+			TRIANGLE_LEG_DISTANCE + SVG_MARGIN,
+			u"inch")...)
+end
+
+# ╔═╡ e8095f07-b0b1-4bb2-9833-0def0895905c
+md"""
+## Hinge
+"""
 
 # ╔═╡ ad83c2a2-2d93-499f-ba62-e3657c25deef
 # Dimensions of the hinge
@@ -25,6 +79,8 @@ end
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
 [deps]
+Markdown = "d6f4376e-aef5-505a-96c1-9c027394607a"
+Pkg = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
 PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 ShaperOriginDesignLib = "919415d1-862b-4149-89fa-1b0f92b0b06b"
 TabletWeaving = "562db2e1-a68d-468c-8704-31bf85beff7e"
@@ -47,7 +103,7 @@ PLUTO_MANIFEST_TOML_CONTENTS = """
 
 julia_version = "1.8.0"
 manifest_format = "2.0"
-project_hash = "b1eb9ccf10b7f9f996363b4d4c8e6788177ffe50"
+project_hash = "013287180bf9a0219cfac922619e0b71fa434030"
 
 [[deps.AbstractPlutoDingetjes]]
 deps = ["Pkg"]
@@ -592,6 +648,16 @@ version = "17.4.0+0"
 
 # ╔═╡ Cell order:
 # ╠═8205ca1e-317b-11ee-3513-4b483fcd6bfb
+# ╠═5eaed644-a54f-4971-a434-8467e3aff551
+# ╠═4fcec7e6-5ae1-4f18-a030-cd12fb046053
+# ╠═750fd64b-c48c-4c2e-a7be-7b3cd9e97f44
+# ╠═6db7b6d4-4488-462b-9f8a-d688f4494515
+# ╟─57a596f2-6aac-4295-a1e7-85830014cc0f
+# ╠═80ebfc5c-6228-47c9-9bce-f5a6f3a0f0fa
+# ╠═81182448-2d85-4dc4-bd91-a25841d794d2
+# ╟─9f89c8a3-2f0b-4890-bb79-8c0944424f55
+# ╠═cc7d079e-b59f-4d88-8f49-9b4293807905
+# ╟─e8095f07-b0b1-4bb2-9833-0def0895905c
 # ╠═ad83c2a2-2d93-499f-ba62-e3657c25deef
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
