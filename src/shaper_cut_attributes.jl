@@ -35,6 +35,12 @@ shaper_cut_attributes = Dict(
 	)
 )
 
+"""
+    shaper_style_string(cut_type::Symbol)::String
+
+Returns a String to be used as the value of the `style` attribute of
+an SVG element to inform Shaper Origin of the cut type.
+"""
 function shaper_style_string(cut_type::Symbol)
     io = IOBuffer()
     for (css, value) in shaper_cut_attributes[cut_type]
