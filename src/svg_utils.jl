@@ -39,21 +39,28 @@ end
 
 
 """
-    viewport_attributes(left, top, right, bottom)
+    viewport_attributes(left, top, right, bottom, to_units, include_width_and_height=true)
 
-Return a named tuple of SVG attributes to be added to the SVG element.
+Return a vector of SVG attributes (expressed as Pairs) to be added to
+the SVG element.
+
+to_units specifies the units that the SVG attributes should be
+expressed in.
 """
 function viewport_attributes(left::Unitful.Length, top::Unitful.Length,
                              right::Unitful.Length, bottom::Unitful.Length,
-                             to_units::Unitful.Units)
+                             to_units::Unitful.Units,
+                             include_width_and_height=true)
     left, top, right, bottom = (x -> ustrip(to_units, x)).((left, top, right, bottom))
     width = right - left
     height = bottom - top
-    return (
-        viewBox = "$left $top $width $height",
-        width = "$width$(SVG_UNITS[to_units])",
-        height = "$height$(SVG_UNITS[to_units])"
-    )
+    result = [:viewBox => "$left $top $width $height" ]
+    if include_width_and_height
+        push!(result,
+              :width => "$width$(SVG_UNITS[to_units])",
+              :height => "$height$(SVG_UNITS[to_units])")
+    end
+    return result
 end
 
 
