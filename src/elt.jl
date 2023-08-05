@@ -8,6 +8,7 @@ function elt(tag::String, stuff...)
     children = []
     for s in stuff
         if s isa Pair
+            @assert s.first isa Symbol string(s)
             attributes[s.first] = string(s.second)
         elseif s isa AbstractString
             push!(children, XML.Text(s))
