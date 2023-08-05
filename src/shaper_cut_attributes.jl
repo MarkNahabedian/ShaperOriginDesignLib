@@ -61,6 +61,6 @@ the depth of a pocket cut.
 """
 function shaper_cut_depth(depth)
     # See https://support.shapertools.com/hc/en-us/articles/12946815194011-Manual-SVG-Cut-Depth-Encoding
-    "shaper:cutDepth" => "$(svgval(depth))"
+    Symbol("shaper:cutDepth") => "$(svgval(depth))"
 end
 
