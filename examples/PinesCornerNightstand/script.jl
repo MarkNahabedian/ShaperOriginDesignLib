@@ -95,7 +95,11 @@ end
 
 function top_outline()
     corner_radius = LEG_INSET + LEG_THICKNESS / 2
-    right_angle_leg = Leg(LEG_INSET, LEG_INSET, LEG_THICKNESS)
+    imaginary_right_angle_leg = Leg(LEG_INSET, LEG_INSET, LEG_THICKNESS)
+    # At the right angle corner we will really have two legs joined by
+    # hinges:
+    raleg1 = Leg(LEG_INSET, LEG_INSET + LEG_THICKNESS, LEG_THICKNESS)
+    raleg2 = Leg(LEG_INSET + LEG_THICKNESS, LEG_INSET, LEG_THICKNESS)
     leg1 = Leg(LEG_INSET, TRIANGLE_LEG_DISTANCE - LEG_INSET, LEG_THICKNESS)
     leg2 = Leg(TRIANGLE_LEG_DISTANCE - LEG_INSET, LEG_INSET, LEG_THICKNESS)
     leg_rect_args = [
@@ -115,7 +119,8 @@ function top_outline()
         elt("g",
             # Invert Y axis for conventional coordinate system:
             :transform => "scale(1 -1) translate(0, $(TRIANGLE_LEG_DISTANCE))",
-            svg(right_angle_leg, leg_rect_args...),
+            svg(raleg1, leg_rect_args...),
+            svg(raleg2, leg_rect_args...),
             svg(leg1, leg_rect_args...),
             svg(leg2, leg_rect_args...),
             #=
@@ -123,7 +128,7 @@ function top_outline()
                 :style => shaper_style_string(:guide_line),
                  :d => pathd(
                     [ "M", center(leg1)... ],
-                    [ "L", center(right_angle_leg)... ],
+                    [ "L", center(imaginary_right_angle_leg)... ],
                     [ "L", center(leg2)... ],
                     [ "L", center(leg1)... ])),
             =#
@@ -131,13 +136,13 @@ function top_outline()
                 :style => shaper_style_string(:guide_line),
                 :d => pathd(
                     [ "M", arc_point(center(leg1)..., 180°, corner_radius)... ],
-                    [ "L", arc_point(center(right_angle_leg)...,
+                    [ "L", arc_point(center(imaginary_right_angle_leg)...,
                                      180°, corner_radius)... ],
                     [ "A", corner_radius, corner_radius,
                       0, 0, 1,
-                      arc_point(center(right_angle_leg)...,
+                      arc_point(center(imaginary_right_angle_leg)...,
                                      -90°, corner_radius)... ],
-                    [ "M", arc_point(center(right_angle_leg)...,
+                    [ "M", arc_point(center(imaginary_right_angle_leg)...,
                                      -90°, corner_radius)... ],
                     [ "L", arc_point(center(leg2)..., -90°, corner_radius)... ],
                     [ "A", corner_radius, corner_radius,
@@ -147,7 +152,11 @@ function top_outline()
                     [ "L", arc_point(center(leg1)..., 45°, corner_radius)... ],
                     [ "A", corner_radius, corner_radius,
                       0, 0, 1,
-                      arc_point(center(leg1)..., 180°, corner_radius)... ]))
+                      arc_point(center(leg1)..., 180°, corner_radius)... ])),
+            center_mark(center(raleg1)...),
+            center_mark(center(raleg2)...),
+            center_mark(center(leg1)...),
+            center_mark(center(leg2)...)
             ))
 end
 
