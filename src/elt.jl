@@ -1,10 +1,12 @@
 export elt
 
+using OrderedCollections
+
 # Copied from TabletWeaving.jl
 
 # XML.jl convenience function for making elements:
 function elt(tag::String, stuff...)
-    attributes = Dict{Symbol, String}()
+    attributes = OrderedDict{Symbol, String}()
     children = []
     for s in stuff
         if s isa Pair
