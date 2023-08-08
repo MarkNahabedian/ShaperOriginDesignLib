@@ -174,6 +174,20 @@ let
 end
 
 
+let
+    leg_count = 4
+    leg_length = HEIGHT   # does not yet subtract thickness of table top.
+    stringer_count = 4
+    stringer_length = TRIANGLE_LEG_DISTANCE  # a bit extra to provide
+                                             # for half way through
+                                             # tennons.
+    open("stock.txt", "w") do io
+        println(io, "$leg_count legs, $leg_length each.")
+        println(io, "$stringer_count stringers, $stringer_length each.")
+    end
+end
+
+
 # Dimensions of the hinge
 HINGE_THICKNESS = 0.03u"inch"       # mottice depth
 HINGE_LENGTH = 0.8u"inch"
