@@ -1,5 +1,5 @@
 
-export svgval, SVG_UNITS, namespace_attributes, viewport_attributes, pathd
+export svgval, SVG_UNITS, namespace_attributes, viewport_attributes, pathd, center_mark
 
 
 """
@@ -110,5 +110,33 @@ function pathd(steps...)
 	end
     end
     String(take!(d))
+end
+
+
+"""
+    center_mark(x::Unitful.Length, y::Unitful.Length
+                tail_length=0.1u"inch")
+
+Mark the center where a hole is to be drilled.
+
+For Shaper Origin, this is a represented as a path of two lines that
+meet at an angle.  Origin is positioned so that the intersection is in
+the cut window but outside the acute angle, such that plunging and
+withdrawing with an angles engraving bit will center drill the hole.
+"""
+function center_mark(x::Unitful.Length, y::Unitful.Length,
+                     tail_length=0.1u"inch")
+    elt("g",
+        elt("path",
+            :d => pathd([ "M", x - tail_length, y ],
+                        [ "L", x, y ],
+                        [ "L", x, y - tail_length ]),
+            :style => shaper_style_string(:on_line_cut)),
+        elt("circle",
+            :cx => x,
+            :cy => y,
+            :r => tail_length,
+            :style => shaper_style_string(:guide_line))
+        )
 end
 
