@@ -127,6 +127,7 @@ withdrawing with an angles engraving bit will center drill the hole.
 function center_mark(x::Unitful.Length, y::Unitful.Length,
                      tail_length=0.1u"inch")
     elt("g",
+        :class => "center_mark",
         elt("path",
             :d => pathd([ "M", x - tail_length, y ],
                         [ "L", x, y ],

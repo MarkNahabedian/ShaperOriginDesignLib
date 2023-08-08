@@ -1,31 +1,31 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:shaper="http://www.shapertools.com/namespaces/shaper" viewBox="-3 -3 26 26" width="90%" height="26in" style="background-color: pink">
   <g transform="scale(1 -1) translate(0, 20 inch)">
-    <g style="fill: none; stroke: green; stroke-width: 0.01;">
+    <g class="Leg" style="fill: none; stroke: green; stroke-width: 0.01;">
       <rect x="1" y="2" width="1" height="1"/>
     </g>
-    <g style="fill: none; stroke: green; stroke-width: 0.01;">
+    <g class="Leg" style="fill: none; stroke: green; stroke-width: 0.01;">
       <rect x="2" y="1" width="1" height="1"/>
     </g>
-    <g style="fill: none; stroke: green; stroke-width: 0.01;">
+    <g class="Leg" style="fill: none; stroke: green; stroke-width: 0.01;">
       <rect x="1" y="19" width="1" height="1"/>
     </g>
-    <g style="fill: none; stroke: green; stroke-width: 0.01;">
+    <g class="Leg" style="fill: none; stroke: green; stroke-width: 0.01;">
       <rect x="19" y="1" width="1" height="1"/>
     </g>
     <path style="fill: none; stroke: blue; stroke-width: 0.01; opacity: 1.0;" d="M 0.000000 19.500000 L 0.000000 1.500000 A 1.500000 1.500000 0 0 1 1.500000 0.000000 M 1.500000 0.000000 L 19.500000 0.000000 A 1.500000 1.500000 0 0 1 20.560660 2.560660 M 20.560660 2.560660 L 2.560660 20.560660 A 1.500000 1.500000 0 0 1 0.000000 19.500000"/>
-    <g>
+    <g class="center_mark">
       <path d="M 1.400000 2.500000 L 1.500000 2.500000 L 1.500000 2.400000" style="fill: none; stroke: gray; stroke-width: 0.01; opacity: 1.0;"/>
       <circle cx="1.5 inch" cy="2.5 inch" r="0.1 inch" style="fill: none; stroke: blue; stroke-width: 0.01; opacity: 1.0;"/>
     </g>
-    <g>
+    <g class="center_mark">
       <path d="M 2.400000 1.500000 L 2.500000 1.500000 L 2.500000 1.400000" style="fill: none; stroke: gray; stroke-width: 0.01; opacity: 1.0;"/>
       <circle cx="2.5 inch" cy="1.5 inch" r="0.1 inch" style="fill: none; stroke: blue; stroke-width: 0.01; opacity: 1.0;"/>
     </g>
-    <g>
+    <g class="center_mark">
       <path d="M 1.400000 19.500000 L 1.500000 19.500000 L 1.500000 19.400000" style="fill: none; stroke: gray; stroke-width: 0.01; opacity: 1.0;"/>
       <circle cx="1.5 inch" cy="19.5 inch" r="0.1 inch" style="fill: none; stroke: blue; stroke-width: 0.01; opacity: 1.0;"/>
     </g>
-    <g>
+    <g class="center_mark">
       <path d="M 19.400000 1.500000 L 19.500000 1.500000 L 19.500000 1.400000" style="fill: none; stroke: gray; stroke-width: 0.01; opacity: 1.0;"/>
       <circle cx="19.5 inch" cy="1.5 inch" r="0.1 inch" style="fill: none; stroke: blue; stroke-width: 0.01; opacity: 1.0;"/>
     </g>

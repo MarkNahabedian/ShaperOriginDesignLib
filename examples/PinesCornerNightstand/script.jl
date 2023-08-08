@@ -77,6 +77,7 @@ end
 
 function svg(leg::Leg, attrs...)
     elt("g",
+        :class => "Leg",
         attrs...,
         elt("rect",
             :x => svgval(leg.x1),
