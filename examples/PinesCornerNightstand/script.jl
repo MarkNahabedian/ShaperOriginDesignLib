@@ -151,6 +151,21 @@ stringer_count(nsm::NightstandModel) = 4
 stringer_length(nsm::NightstandModel) =
     nsm.triangle_leg_distance + 2 * nsm.tenon_length
 
+function write_top_outline_file(nsm::NightstandModel, filename)
+    svg = top_outline(nsm)
+    XML.write(filename, svg)
+end
+
+function show_parameters(io::IO, nsm::NightstandModel)
+    println(io, "nightstand_height\t$(nsm.nightstand_height)")
+    println(io, "top_thickness\t$(nsm.top_thickness)")
+    println(io, "top_thickness\t$(nsm.top_thickness)")
+    println(io, "triangle_leg_distance\t$(nsm.triangle_leg_distance)")
+    println(io, "leg_inset\t$(nsm.leg_inset)")
+    println(io, "leg_thickness\t$(nsm.leg_thickness)")
+    println(io, "tenon_length\t$(nsm.tenon_length)")
+end
+
 
 ################################################################################
 
@@ -213,6 +228,7 @@ function top_outline(nsm::NightstandModel)
             ))
 end
 
+
 function write_top_outline_file(nsm::NightstandModel, filename)
     svg = top_outline(nsm)
     XML.write(filename, svg)
@@ -221,6 +237,8 @@ end
 
 function write_measurement_file(nsm::NightstandModel, filename)
     open(filename, "w") do io
+        show_parameters(io, nsm)
+        println(io)
         println(io, "$(leg_count(nsm)) legs, $(leg_length(nsm)) each.")
         println(io, "$(stringer_count(nsm)) stringers, $(stringer_length(nsm)) each.")
     end

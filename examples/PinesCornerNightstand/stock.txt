@@ -1,2 +1,10 @@
+nightstand_height	27 inch
+top_thickness	0.5 inch
+top_thickness	0.5 inch
+triangle_leg_distance	20 inch
+leg_inset	1 inch
+leg_thickness	1 inch
+tenon_length	0.75 inch
+
 4 legs, 26.5 inch each.
 4 stringers, 21.5 inch each.
