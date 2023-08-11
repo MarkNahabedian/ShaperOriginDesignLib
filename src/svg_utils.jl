@@ -134,9 +134,9 @@ function center_mark(x::Unitful.Length, y::Unitful.Length,
                         [ "L", x, y - tail_length ]),
             :style => shaper_style_string(:on_line_cut)),
         elt("circle",
-            :cx => x,
-            :cy => y,
-            :r => tail_length,
+            :cx => svgval(x),
+            :cy => svgval(y),
+            :r => svgval(tail_length),
             :style => shaper_style_string(:guide_line))
         )
 end
