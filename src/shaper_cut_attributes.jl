@@ -8,30 +8,34 @@ shaper_cut_attributes = Dict(
 	:inside_cut => OrderedDict(
 		"fill" => "white",
 		"stroke" => "black",
-		"stroke-width" => "0.01",
-		"opacity" => "1.0"),
+		"stroke-width" => "1px",
+		"opacity" => "1.0",
+                "vector-effect" => "non-scaling-stroke"
+        ),
 	:outside_cut => OrderedDict(
 		"fill" => "black",
 		"stroke" => "black",
-		"stroke-width" => "0.01",
+		"stroke-width" => "1px",
 		"opacity" => "1.0"
 	),
 	:on_line_cut => OrderedDict(
 		"fill" => "none",
-		"stroke" => "gray",
-		"stroke-width" => "0.01",
-		"opacity" => "1.0"
+		"stroke" => "#5B5B5B",     # "gray"
+		"stroke-width" => "1px",
+		"opacity" => "1.0",
+                "vector-effect" => "non-scaling-stroke"
 	),
 	:pocket_cut => OrderedDict(
-		"fill" => "gray",
+		"fill" => "#7C7C7C",       # "gray"
 		"stroke" => "none",
 		"opacity" => "1.0"
 	),
 	:guide_line => OrderedDict(
 		"fill" => "none",
 		"stroke" => "blue",
-		"stroke-width" => "0.01",
-		"opacity" => "1.0"
+		"stroke-width" => "1px",
+		"opacity" => "1.0",
+                "vector-effect" => "non-scaling-stroke"
 	)
 )
 
