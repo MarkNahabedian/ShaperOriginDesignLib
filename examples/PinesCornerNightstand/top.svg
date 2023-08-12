@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:shaper="http://www.shapertools.com/namespaces/shaper" viewBox="-3 -3 26 26" width="90%">
   <g transform="translate(0, 20) scale(1 -1)">
     <path style="fill: none; stroke: blue; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;" d="M 1.500000 19.500000 L 1.500000 1.500000 L 19.500000 1.500000 L 1.500000 19.500000"/>
-    <path style="fill: #7C7C7C; stroke: none; opacity: 1.0;" d="M 0.500000 19.500000 L 0.500000 1.500000 A 1 1 0 0 1 1.500000 0.500000 L 19.500000 0.500000 A 1 1 0 0 1 20.207107 2.207107 L 2.207107 20.207107 A 1 1 0 0 1 0.500000 19.500000"/>
+    <path style="fill: black; stroke: black; stroke-width: 1px; opacity: 1.0;" d="M 0.500000 19.500000 L 0.500000 1.500000 A 1 1 0 0 1 1.500000 0.500000 L 19.500000 0.500000 A 1 1 0 0 1 20.207107 2.207107 L 2.207107 20.207107 A 1 1 0 0 1 0.500000 19.500000"/>
     <g class="Leg">
       <rect x="1" y="2" width="1" height="1" style="fill: none; stroke: blue; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
     </g>

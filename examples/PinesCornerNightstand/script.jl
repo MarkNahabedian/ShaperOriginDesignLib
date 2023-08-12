@@ -149,7 +149,10 @@ leg_count(nsm::NightstandModel) = 4
 stringer_count(nsm::NightstandModel) = 4
 
 stringer_length(nsm::NightstandModel) =
-    nsm.triangle_leg_distance + 2 * nsm.tenon_length
+    (nsm.triangle_leg_distance
+     - 2 * nsm.leg_inset
+     - 2 * nsm.leg_thickness
+     + 2 * nsm.tenon_length)
 
 function write_top_outline_file(nsm::NightstandModel, filename)
     svg = top_outline(nsm)
@@ -158,7 +161,6 @@ end
 
 function show_parameters(io::IO, nsm::NightstandModel)
     println(io, "nightstand_height\t$(nsm.nightstand_height)")
-    println(io, "top_thickness\t$(nsm.top_thickness)")
     println(io, "top_thickness\t$(nsm.top_thickness)")
     println(io, "triangle_leg_distance\t$(nsm.triangle_leg_distance)")
     println(io, "leg_inset\t$(nsm.leg_inset)")
@@ -200,7 +202,7 @@ function top_outline(nsm::NightstandModel)
                     [ "L", center(leg2)... ],
                     [ "L", center(leg1)... ])),
             elt("path",
-                :style => shaper_style_string(:pocket_cut),
+                :style => shaper_style_string(:outside_cut),
                 :d => pathd(
                     [ "M", arc_point(center(leg1)..., 180°, corner_radius)... ],
                     [ "L", arc_point(center(imaginary_right_angle_leg)...,
