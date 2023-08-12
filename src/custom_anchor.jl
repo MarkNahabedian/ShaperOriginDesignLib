@@ -10,6 +10,7 @@ Returns an SVG `path` element.
 """
 function custom_anchor(x, y; xdirection=1, ydirection=-1, size=0.25u"inch")
     elt("path",
+        :class => "custom_anchor",
         :style => "fill:red; stroke=none;",
 	:d => pathd(
 	    ["M", x, y],
