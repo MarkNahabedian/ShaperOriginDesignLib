@@ -270,63 +270,88 @@ write_top_outline_file(NIGHTSTAND_MODEL, "top.svg")
 
 ################################################################################
 
+struct Hinge
+    leaf_thickness
+    length   # length is of each leaf in the direction parallel to the hinge pin
+    width    # measurement of the entire hinge, perpendicular to the length
+    screw_hole_diameter
+    distance_between_centers
+    screw_hole_center_from_end
+    # The hinges I have measure a consistent distance from the
+    # abstract center line of the hinge (the projection of the center
+    # of the hinge pin onto the plane of the hinge when opened flat,
+    # but the two leaves vary in width.  For this reason we measure
+    # hole to hole across the center.
+    screw_hole_center_from_axis
 
-# Dimensions of the hinge
-HINGE_THICKNESS = 0.03u"inch"       # mottice depths
-HINGE_LENGTH = 0.8u"inch"
-HINGE_WIDTH = 1.0u"inch"    # from edge of one leaf to the edge of the other
-
-SCREW_HOLE_DIAMETER = 0.135u"inch"   # 1/8# transfer punch passes through
-DISTANCE_BETWEEN_CENTERS = 0.315u"inch" + SCREW_HOLE_DIAMETER
-SCREW_HOLE_CENTER_FROM_END = (HINGE_LENGTH - DISTANCE_BETWEEN_CENTERS
-                              - 2 * SCREW_HOLE_DIAMETER) / 2
-SCREW_HOLE_CENTER_FROM_EDGE = 0.14u"inch" + SCREW_HOLE_DIAMETER / 2
+    Hinge(; leaf_thickness, length, width,
+          screw_hole_diameter, distance_between_centers,
+          screw_hole_center_from_end, screw_hole_center_from_axis) =
+              new(leaf_thickness, length, width,
+                  screw_hole_diameter, distance_between_centers,
+                  screw_hole_center_from_end,
+                  screw_hole_center_from_axis)
+end
 
 
-function hinge_mortise(center_x, center_y)
+function hinge_mortise(hinge::Hinge)
+    center_x = hinge.length / 2
+    center_y = hinge.width / 2
     elt("svg",
         namespace_attributes()...,
         viewport_attributes(
             - SVG_MARGIN,
             - SVG_MARGIN,
-            HINGE_LENGTH + SVG_MARGIN,
-            HINGE_WIDTH + SVG_MARGIN,
-            u"inch")...,
-	:style => "background-color: yellow",
+            hinge.length + SVG_MARGIN,
+            hinge.width + SVG_MARGIN,
+            u"inch", false)...,
+        :width => "90%",
         elt("g",
             elt("path",
                 :d => pathd([ "M", 0u"inch", 0u"inch" ],
-                            [ "h", HINGE_LENGTH ],
-                            [ "v", HINGE_WIDTH ],
-                            [ "h", - HINGE_LENGTH ],
+                            [ "h", hinge.length ],
+                            [ "v", hinge.width ],
+                            [ "h", - hinge.length ],
                             "z"),
                 :style => shaper_style_string(:pocket_cut),
-                shaper_cut_depth(HINGE_THICKNESS)),
+                shaper_cut_depth(hinge.leaf_thickness)),
             elt("path",
                 :d => pathd([ "M", 0u"inch", center_y ],
-                            [ "l", HINGE_LENGTH ]),
+                            [ "h", hinge.length ]),
                 :style => shaper_style_string(:guide_line)),
             custom_anchor(center_x, center_y),
-            center_mark(SCREW_HOLE_CENTER_FROM_END,
-                        SCREW_HOLE_CENTER_FROM_EDGE),
-            center_mark(HINGE_LENGTH - SCREW_HOLE_CENTER_FROM_END,
-                        SCREW_HOLE_CENTER_FROM_EDGE),
-            center_mark(SCREW_HOLE_CENTER_FROM_END,
-                        HINGE_WIDTH - SCREW_HOLE_CENTER_FROM_EDGE),
-            center_mark(HINGE_LENGTH - SCREW_HOLE_CENTER_FROM_END,
-                        HINGE_WIDTH - SCREW_HOLE_CENTER_FROM_EDGE)
-            ))
+            center_mark(hinge.screw_hole_center_from_end,
+                        center_y - hinge.screw_hole_center_from_axis),
+            center_mark(hinge.length - hinge.screw_hole_center_from_end,
+                        center_y -  hinge.screw_hole_center_from_axis),
+            center_mark(hinge.screw_hole_center_from_end,
+                        center_y + hinge.screw_hole_center_from_axis),
+            center_mark(hinge.length - hinge.screw_hole_center_from_end,
+                        center_y + hinge.screw_hole_center_from_axis)))
 end
 
 
+################################################################################
+
+LEG_HINGE =
+    let
+        HINGE_LENGTH = 0.764u"inch"
+        # 1/8" transfer punch passes through
+        SCREW_HOLE_DIAMETER = 0.125u"inch"
+        DISTANCE_BETWEEN_CENTERS = 0.320u"inch" + SCREW_HOLE_DIAMETER
+        Hinge(leaf_thickness = 0.03u"inch",
+              length = HINGE_LENGTH,
+              width = 1.0u"inch",
+              screw_hole_diameter = SCREW_HOLE_DIAMETER,
+              distance_between_centers = DISTANCE_BETWEEN_CENTERS,
+              screw_hole_center_from_end = (HINGE_LENGTH - DISTANCE_BETWEEN_CENTERS
+                                            - SCREW_HOLE_DIAMETER) / 2,
+              screw_hole_center_from_axis = (0.465u"inch" + SCREW_HOLE_DIAMETER) / 2)
+    end
+
+
 let
-    center_x = HINGE_LENGTH / 2
-    center_y = HINGE_WIDTH / 2
-    svg = hinge_mortise(center_x, center_y)
-    html = elt("html",
-	       elt("head"),
-	       elt("body", svg))
+    svg = hinge_mortise(LEG_HINGE)
     XML.write("hinge_mortise.svg", svg)
-    HTML(XML.write(html))
 end
 
