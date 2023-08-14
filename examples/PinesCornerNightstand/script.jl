@@ -166,6 +166,10 @@ function show_parameters(io::IO, nsm::NightstandModel)
     println(io, "leg_inset\t$(nsm.leg_inset)")
     println(io, "leg_thickness\t$(nsm.leg_thickness)")
     println(io, "tenon_length\t$(nsm.tenon_length)")
+    rnd(u) = round(unit(u), u, digits=3)
+    hypotenuse = sqrt(2 * nsm.triangle_leg_distance * nsm.triangle_leg_distance)
+    max_hypotenuse = 33u"inch"
+    println(io, "hypotenuse\t$(rnd(hypotenuse)) \tmax $(rnd(max_hypotenuse))")
 end
 
 
