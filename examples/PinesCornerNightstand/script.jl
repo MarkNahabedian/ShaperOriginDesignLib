@@ -13,24 +13,10 @@ using ShaperOriginDesignLib
 import Unitful: °
 
 
+MAX_HYPOTENUSE = 33u"inch"
+
 # Presentation parameters
 SVG_MARGIN = 3u"inch"
-
-
-# Nightstand measurements
-
-# The bed is 27" high, so the table should be about that height
-HEIGHT = 27u"inch"
-TOP_THICKNESS = 0.5u"inch"
-
-
-# Maximum hypotenuse length is 32"
-# Why didn't I measure the distance of the bed from the wall?
-TRIANGLE_LEG_DISTANCE = 20u"inch"
-
-LEG_THICKNESS = 1u"inch"
-LEG_INSET = 1u"inch"
-TENON_LENGTH = 0.75u"inch"
 
 
 ################################################################################
@@ -131,11 +117,11 @@ struct NightstandModel
             leg_inset,
             leg_thickness,
             tenon_length,
-            Leg(LEG_INSET, LEG_INSET, LEG_THICKNESS),  # imaginary_right_angle_leg
-            Leg(LEG_INSET, LEG_INSET + LEG_THICKNESS, LEG_THICKNESS),  # raleg1
-            Leg(LEG_INSET + LEG_THICKNESS, LEG_INSET, LEG_THICKNESS),  # raleg2
-            Leg(LEG_INSET, TRIANGLE_LEG_DISTANCE - LEG_INSET, LEG_THICKNESS), # leg1
-            Leg(TRIANGLE_LEG_DISTANCE - LEG_INSET, LEG_INSET, LEG_THICKNESS)  # leg2
+            Leg(leg_inset, leg_inset, leg_thickness),  # imaginary_right_angle_leg
+            Leg(leg_inset, leg_inset + leg_thickness, leg_thickness),  # raleg1
+            Leg(leg_inset + leg_thickness, leg_inset, leg_thickness),  # raleg2
+            Leg(leg_inset, triangle_leg_distance - leg_inset, leg_thickness), # leg1
+            Leg(triangle_leg_distance - leg_inset, leg_inset, leg_thickness)  # leg2
             )
     end
 end
@@ -160,16 +146,16 @@ function write_top_outline_file(nsm::NightstandModel, filename)
 end
 
 function show_parameters(io::IO, nsm::NightstandModel)
+    rnd(u) = round(unit(u), u, digits=3)
+    max_leg = (sqrt(MAX_HYPOTENUSE * MAX_HYPOTENUSE / 2))
     println(io, "nightstand_height\t$(nsm.nightstand_height)")
     println(io, "top_thickness\t$(nsm.top_thickness)")
-    println(io, "triangle_leg_distance\t$(nsm.triangle_leg_distance)")
+    println(io, "triangle_leg_distance\t$(nsm.triangle_leg_distance) \t max $(rnd(max_leg))")
     println(io, "leg_inset\t$(nsm.leg_inset)")
     println(io, "leg_thickness\t$(nsm.leg_thickness)")
     println(io, "tenon_length\t$(nsm.tenon_length)")
-    rnd(u) = round(unit(u), u, digits=3)
     hypotenuse = sqrt(2 * nsm.triangle_leg_distance * nsm.triangle_leg_distance)
-    max_hypotenuse = 33u"inch"
-    println(io, "hypotenuse\t$(rnd(hypotenuse)) \tmax $(rnd(max_hypotenuse))")
+    println(io, "hypotenuse\t$(rnd(hypotenuse)) \tmax $(rnd(MAX_HYPOTENUSE))")
 end
 
 
@@ -252,18 +238,23 @@ end
 
 
 ################################################################################
+# Nightstand measurements
+
+# Maximum hypotenuse length is 32"
+# Why didn't I measure the distance of the bed from the wall?
+# TRIANGLE_LEG_DISTANCE = 20u"inch"
 
 NIGHTSTAND_MODEL =
     NightstandModel(;
                     # The bed is 27" high, so the table should be about that height
-                    nightstand_height = 27u"inch",
-                    top_thickness = 0.5u"inch",
+                    nightstand_height = 28u"inch",
+                    top_thickness = 0.75u"inch",
                     # Maximum hypotenuse length is 32"
                     # Why didn't I measure the distance of the bed from the wall?
 
-                    triangle_leg_distance = 20u"inch",
+                    triangle_leg_distance = 21u"inch",
                     leg_inset = 1u"inch",
-                    leg_thickness = 1u"inch",
+                    leg_thickness = 1.5u"inch",
                     tenon_length = 0.75u"inch"
                     )
 

@@ -1,10 +1,10 @@
-nightstand_height	27 inch
-top_thickness	0.5 inch
-triangle_leg_distance	20 inch
+nightstand_height	28 inch
+top_thickness	0.75 inch
+triangle_leg_distance	21 inch 	 max 23.335 inch
 leg_inset	1 inch
-leg_thickness	1 inch
+leg_thickness	1.5 inch
 tenon_length	0.75 inch
-hypotenuse	28.284 inch 	max 33.0 inch
+hypotenuse	29.698 inch 	max 33.0 inch
 
-4 legs, 26.5 inch each.
+4 legs, 27.25 inch each.
 4 stringers, 17.5 inch each.
