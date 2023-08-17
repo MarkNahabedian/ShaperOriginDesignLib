@@ -20,13 +20,13 @@ shaper_cut_attributes = Dict(
 	),
 	:on_line_cut => OrderedDict(
 		"fill" => "none",
-		"stroke" => "#5B5B5B",     # "gray"
+		"stroke" => "rgb(70 70 70)",     # "gray"
 		"stroke-width" => "1px",
 		"opacity" => "1.0",
                 "vector-effect" => "non-scaling-stroke"
 	),
 	:pocket_cut => OrderedDict(
-		"fill" => "#7C7C7C",       # "gray"
+		"fill" => "rgb(175 175 175)",       # "gray"
 		"stroke" => "none",
 		"opacity" => "1.0"
 	),

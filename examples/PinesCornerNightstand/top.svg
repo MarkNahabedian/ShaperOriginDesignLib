@@ -15,19 +15,19 @@
       <rect x="20" y="1" width="1.5" height="1.5" style="fill: none; stroke: blue; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
     </g>
     <g class="center_mark">
-      <path d="M 1.650000 3.250000 L 1.750000 3.250000 L 1.750000 3.150000" style="fill: none; stroke: #5B5B5B; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
+      <path d="M 1.650000 3.250000 L 1.750000 3.250000 L 1.750000 3.150000" style="fill: none; stroke: rgb(70 70 70); stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
       <circle cx="1.75" cy="3.25" r="0.1" style="fill: none; stroke: blue; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
     </g>
     <g class="center_mark">
-      <path d="M 3.150000 1.750000 L 3.250000 1.750000 L 3.250000 1.650000" style="fill: none; stroke: #5B5B5B; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
+      <path d="M 3.150000 1.750000 L 3.250000 1.750000 L 3.250000 1.650000" style="fill: none; stroke: rgb(70 70 70); stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
       <circle cx="3.25" cy="1.75" r="0.1" style="fill: none; stroke: blue; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
     </g>
     <g class="center_mark">
-      <path d="M 1.650000 20.750000 L 1.750000 20.750000 L 1.750000 20.650000" style="fill: none; stroke: #5B5B5B; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
+      <path d="M 1.650000 20.750000 L 1.750000 20.750000 L 1.750000 20.650000" style="fill: none; stroke: rgb(70 70 70); stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
       <circle cx="1.75" cy="20.75" r="0.1" style="fill: none; stroke: blue; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
     </g>
     <g class="center_mark">
-      <path d="M 20.650000 1.750000 L 20.750000 1.750000 L 20.750000 1.650000" style="fill: none; stroke: #5B5B5B; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
+      <path d="M 20.650000 1.750000 L 20.750000 1.750000 L 20.750000 1.650000" style="fill: none; stroke: rgb(70 70 70); stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
       <circle cx="20.75" cy="1.75" r="0.1" style="fill: none; stroke: blue; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
     </g>
   </g>

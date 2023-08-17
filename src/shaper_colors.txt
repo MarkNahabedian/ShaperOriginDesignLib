@@ -1,15 +1,19 @@
 Hi Mark,
  
-I consulted with Sam to get some more info for you, here's his response:
+I consulted with Sam to get some more info for you, here's his
+response:
  
-We leave the color coding description intentionally simple and fuzzy to help new users avoid over thinking color coding.
+We leave the color coding description intentionally simple and fuzzy
+to help new users avoid over thinking color coding.
 
 
-This post is for the more technical users, skip it if you are just trying to casually makes some shapes and get cutting.
+This post is for the more technical users, skip it if you are just
+trying to casually makes some shapes and get cutting.
 
  
 
-You can test this yourself by making a range of colored squares and tracking how they are interpreted by Origin.
+You can test this yourself by making a range of colored squares and
+tracking how they are interpreted by Origin.
 
  
 
