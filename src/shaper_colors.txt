@@ -1,0 +1,61 @@
+Hi Mark,
+ 
+I consulted with Sam to get some more info for you, here's his response:
+ 
+We leave the color coding description intentionally simple and fuzzy to help new users avoid over thinking color coding.
+
+
+This post is for the more technical users, skip it if you are just trying to casually makes some shapes and get cutting.
+
+ 
+
+You can test this yourself by making a range of colored squares and tracking how they are interpreted by Origin.
+
+ 
+
+Here are some high level rules using safe round numbers:
+
+
+each RGB value exists ranges from 0 - 255
+
+ 
+
+To safely interpret as white:
+
+preferably all colors are 255,
+but all values greater than 190 will work
+to safely interpret as black:
+
+preferably all values are 0
+but all values being less than 50 is safe
+To safely interpret as grey:
+
+Keep the spread of values less than 50
+and keep all values within 65 - 180 to prevent them being interpreted as black or white
+To safely interpret as blue:
+
+blue needs to be a value 60 more than the other colors
+ 
+
+The actual value without the safety buffer where the transition occurs are a little more specific:
+
+
+127, 127, 181 will interpret as a blue guide. ( spread = 54 )
+127, 127, 180 will interpret as a grey pocket. ( spread = 53 )
+
+ 
+
+all values of 61 or less will interpret as black
+all values of 189 or more will will interpret white
+
+ 
+Let me know if you have any further questions!
+ 
+Best,
+Ted
+Shaper Tools
+
+-------------------------------------------------------------
+Want to be the first to hear about all things Shaper? Join our mailing list
+
+[7G61EM-9RX55]
