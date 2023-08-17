@@ -252,7 +252,9 @@ NIGHTSTAND_MODEL =
                     # Maximum hypotenuse length is 32"
                     # Why didn't I measure the distance of the bed from the wall?
 
-                    triangle_leg_distance = 21u"inch",
+                    # length of the two abstract legs of the right
+                    # isocelese triangle of the tabletop:
+                    triangle_leg_distance = 16.5u"inch",
                     leg_inset = 1u"inch",
                     leg_thickness = 1.5u"inch",
                     tenon_length = 0.75u"inch"
