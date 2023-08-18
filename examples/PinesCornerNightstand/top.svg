@@ -1,7 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:shaper="http://www.shapertools.com/namespaces/shaper" viewBox="-3 -3 22.5 22.5" width="90%">
   <g transform="translate(0, 16.5) scale(1 -1)">
-    <path style="fill: none; stroke: blue; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;" d="M 1.750000 16.250000 L 1.750000 1.750000 L 16.250000 1.750000 L 1.750000 16.250000"/>
-    <path style="fill: black; stroke: black; stroke-width: 1px; opacity: 1.0;" d="M 0.750000 16.250000 L 0.750000 1.750000 A 1 1 0 0 1 1.750000 0.750000 L 16.250000 0.750000 A 1 1 0 0 1 16.957107 2.457107 L 2.457107 16.957107 A 1 1 0 0 1 0.750000 16.250000"/>
+    <path style="fill: black; stroke: black; stroke-width: 1px; opacity: 1.0;" d="M 0.750000 15.250000 L 0.750000 1.750000 A 1 1 0 0 1 1.750000 0.750000 L 15.250000 0.750000 A 1 1 0 0 1 15.957107 2.457107 L 2.457107 15.957107 A 1 1 0 0 1 0.750000 15.250000"/>
+    <path style="fill: none; stroke: blue; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;" d="M 1.750000 15.250000 L 1.750000 1.750000 L 15.250000 1.750000 L 1.750000 15.250000"/>
+    <path style="fill: none; stroke: blue; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;" d="M 0 16.500000 L 0 0 L 16.500000 0 z"/>
     <g class="Leg">
       <rect x="1" y="2.5" width="1.5" height="1.5" style="fill: none; stroke: blue; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
     </g>
@@ -9,10 +10,10 @@
       <rect x="2.5" y="1" width="1.5" height="1.5" style="fill: none; stroke: blue; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
     </g>
     <g class="Leg">
-      <rect x="1" y="15.5" width="1.5" height="1.5" style="fill: none; stroke: blue; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
+      <rect x="1" y="14.5" width="1.5" height="1.5" style="fill: none; stroke: blue; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
     </g>
     <g class="Leg">
-      <rect x="15.5" y="1" width="1.5" height="1.5" style="fill: none; stroke: blue; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
+      <rect x="14.5" y="1" width="1.5" height="1.5" style="fill: none; stroke: blue; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
     </g>
     <g class="center_mark">
       <path d="M 1.650000 3.250000 L 1.750000 3.250000 L 1.750000 3.150000" style="fill: none; stroke: rgb(70 70 70); stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
@@ -23,12 +24,12 @@
       <circle cx="3.25" cy="1.75" r="0.1" style="fill: none; stroke: blue; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
     </g>
     <g class="center_mark">
-      <path d="M 1.650000 16.250000 L 1.750000 16.250000 L 1.750000 16.150000" style="fill: none; stroke: rgb(70 70 70); stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
-      <circle cx="1.75" cy="16.25" r="0.1" style="fill: none; stroke: blue; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
+      <path d="M 1.650000 15.250000 L 1.750000 15.250000 L 1.750000 15.150000" style="fill: none; stroke: rgb(70 70 70); stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
+      <circle cx="1.75" cy="15.25" r="0.1" style="fill: none; stroke: blue; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
     </g>
     <g class="center_mark">
-      <path d="M 16.150000 1.750000 L 16.250000 1.750000 L 16.250000 1.650000" style="fill: none; stroke: rgb(70 70 70); stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
-      <circle cx="16.25" cy="1.75" r="0.1" style="fill: none; stroke: blue; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
+      <path d="M 15.150000 1.750000 L 15.250000 1.750000 L 15.250000 1.650000" style="fill: none; stroke: rgb(70 70 70); stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
+      <circle cx="15.25" cy="1.75" r="0.1" style="fill: none; stroke: blue; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
     </g>
   </g>
 </svg>

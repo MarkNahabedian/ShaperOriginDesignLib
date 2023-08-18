@@ -125,8 +125,10 @@ struct NightstandModel
             Leg(leg_inset, leg_inset, leg_thickness),  # imaginary_right_angle_leg
             Leg(leg_inset, leg_inset + leg_thickness, leg_thickness),  # raleg1
             Leg(leg_inset + leg_thickness, leg_inset, leg_thickness),  # raleg2
-            Leg(leg_inset, triangle_leg_distance - leg_inset, leg_thickness), # leg1
-            Leg(triangle_leg_distance - leg_inset, leg_inset, leg_thickness)  # leg2
+            # We subtract leg_inset twice because a Leg is specified
+            # by its top left corner:
+            Leg(leg_inset, triangle_leg_distance - 2 * leg_inset, leg_thickness), # leg1
+            Leg(triangle_leg_distance - 2 * leg_inset, leg_inset, leg_thickness)  # leg2
             )
     end
 end
@@ -143,6 +145,7 @@ stringer_length(nsm::NightstandModel) =
     (
         distance(center(nsm.raleg1)..., center(nsm.leg1)...)
         - nsm.leg_thickness
+        + 2 * nsm.tenon_length
     )
 
 function write_top_outline_file(nsm::NightstandModel, filename)
@@ -190,13 +193,6 @@ function top_outline(nsm::NightstandModel)
             # Invert Y axis for conventional coordinate system:
             :transform => "translate(0, $(svgval(nsm.triangle_leg_distance))) scale(1 -1)",
             elt("path",
-                :style => shaper_style_string(:guide_line),
-                 :d => pathd(
-                    [ "M", center(leg1)... ],
-                    [ "L", center(imaginary_right_angle_leg)... ],
-                    [ "L", center(leg2)... ],
-                    [ "L", center(leg1)... ])),
-            elt("path",
                 :style => shaper_style_string(:outside_cut),
                 :d => pathd(
                     [ "M", arc_point(center(leg1)..., 180°, corner_radius)... ],
@@ -214,6 +210,20 @@ function top_outline(nsm::NightstandModel)
                     [ "A", corner_radius, corner_radius,
                       0, 0, 1,
                       arc_point(center(leg1)..., 180°, corner_radius)... ])),
+            elt("path",
+                :style => shaper_style_string(:guide_line),
+                 :d => pathd(
+                    [ "M", center(leg1)... ],
+                    [ "L", center(imaginary_right_angle_leg)... ],
+                    [ "L", center(leg2)... ],
+                    [ "L", center(leg1)... ])),
+            elt("path",
+                :style => shaper_style_string(:guide_line),
+                :d => pathd(
+                    [ "M", 0, nsm.triangle_leg_distance ],
+                    [ "L", 0, 0 ],
+                    [ "L", nsm.triangle_leg_distance, 0 ],
+                    "z")),
             svg(raleg1, leg_rect_args...),
             svg(raleg2, leg_rect_args...),
             svg(leg1, leg_rect_args...),
