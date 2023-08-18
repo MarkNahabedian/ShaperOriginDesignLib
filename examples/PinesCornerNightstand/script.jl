@@ -21,6 +21,11 @@ SVG_MARGIN = 3u"inch"
 
 ################################################################################
 
+distance(x1, y1, x2, y2) = sqrt((x2 - x1)^2 + (y2 - y1)^2)
+
+
+################################################################################
+
 struct Leg
     x1
     y1
@@ -135,10 +140,10 @@ leg_count(nsm::NightstandModel) = 4
 stringer_count(nsm::NightstandModel) = 4
 
 stringer_length(nsm::NightstandModel) =
-    (nsm.triangle_leg_distance
-     - 2 * nsm.leg_inset
-     - 2 * nsm.leg_thickness
-     + 2 * nsm.tenon_length)
+    (
+        distance(center(nsm.raleg1)..., center(nsm.leg1)...)
+        - nsm.leg_thickness
+    )
 
 function write_top_outline_file(nsm::NightstandModel, filename)
     svg = top_outline(nsm)
