@@ -14,5 +14,6 @@ include("elt.jl")
 include("shaper_cut_attributes.jl")
 include("svg_utils.jl")
 include("custom_anchor.jl")
+include("point.jl")
 
 end
