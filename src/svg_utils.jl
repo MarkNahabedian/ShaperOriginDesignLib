@@ -96,6 +96,9 @@ function pathd(steps...)
 	elseif token isa Real
 	    @printf(d, "%3f", token)
             needspace = true
+        elseif token isa Point
+            putd(token.x)
+            putd(token.y)
 	else
 	    throw(ErrorException("Unsupported pathd token $token"))
 	end
