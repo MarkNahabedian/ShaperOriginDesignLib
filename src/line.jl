@@ -1,6 +1,6 @@
 
 export Line, coefficients, vector_parametric
-export direction, intercept
+export direction, normal_vector, intercept
 export translate, point_on_line, point_in_segment, intersetction
 
 
@@ -56,10 +56,19 @@ distance(line::Line) = distance(line.point1, line.point2)
 direction(line::Line) = direction(line.point2, line.point1)
 
 
-function translate(line::Line, delta_x, delta_y)
-    displacement = Point(delta_x, delta_y)
+function normal_vector(line::Line)
+    Point(line.point1.y - line.point2.y,
+          line.point2.x - line.point1.x)
+end
+
+
+function translate(line::Line, displacement::Point)
     Line(line.point1 - displacement,
          line.point2 - displacement)
+end
+
+function translate(line::Line, delta_x, delta_y)
+    translate(line, Point(delta_x, delta_y))
 end
 
 
