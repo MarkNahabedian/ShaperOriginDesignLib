@@ -1,5 +1,5 @@
 
-export Point, dot, elementwise_product, distance, normalize, direction
+export Point, dot, elementwise_product, distance, normalize, direction, translate
 
 struct Point
     x
@@ -22,6 +22,7 @@ end
 (Base.:(==))(p1::Point, p2::Point) = p1.x == p2.x && p1.y == p2.y
 (Base.:+)(p1::Point, p2::Point) = Point(p1.x + p2.x, p1.y + p2.y)
 (Base.:-)(p1::Point, p2::Point) = Point(p1.x - p2.x, p1.y - p2.y)
+(Base.:-)(p::Point) = Point(-p.x, -p.y)
 
 (Base.:*)(n::Number, p::Point) = Point(n * p.x, n * p.y)
 (Base.:/)(p::Point, n::Number) = Point(p.x / n, p.y / n)
@@ -32,6 +33,10 @@ elementwise_product(p1::Point, p2::Point) = p1.*p2
 
 distance(x1, y1, x2, y2) = sqrt((x2 - x1)^2 + (y2 - y1)^2)
 
+distance(p1::Point, p2::Point) =
+    sqrt((p2.x - p1.x)^2 + (p2.y - p1.y)^2)
+
+# Magnitude of Point interpreted as a vector:
 distance(p::Point) = sqrt((p.x)^2 + (p.y)^2)
 
 normalize(p::Point) = p / distance(p)
@@ -48,4 +53,6 @@ function direction(vertex::Point, p1::Point, p2::Point)
     v2 = p2 - vertex
     acos(dot(v1, v2) / (distance(v1) * distance(v2)))
 end
+
+translate(p::Point, delta_x, delta_y) = Point(p.x + delta_x, p.y + delta_y)
 

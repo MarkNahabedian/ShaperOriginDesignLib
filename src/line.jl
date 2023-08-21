@@ -1,7 +1,7 @@
 
 export Line, coefficients, vector_parametric
 export direction, normal_vector, intercept
-export translate, point_on_line, point_in_segment, intersetction
+export translate, point_on_line, point_in_segment, intersetction, point
 
 
 """
@@ -109,7 +109,24 @@ end
 function intersetction(line1::Line, line2::Line)::Point
     a1, b1, c1 = coefficients(line1)
     a2, b2, c2 = coefficients(line2)
-    println([a1 b1; a2 b2])
     return Point((inv([a1 b1; a2 b2]) * [-c1; -c2])...)
+end
+
+
+"""
+    point(line::Line; x, y)
+
+Returns a Point with the specified x or y coordinate that the line
+passes through.
+"""
+function point(line::Line; x=nothing, y=nothing)
+    a, b, c = coefficients(line)
+    if y === nothing
+        Point(x, (- a * x - c) / b)
+    elseif x === nothing
+        Point((- b * y - c) / a, y)
+    else
+        error("Specify either x or y, but not both.")
+    end
 end
 

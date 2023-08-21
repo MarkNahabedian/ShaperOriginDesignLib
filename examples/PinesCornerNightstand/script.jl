@@ -27,10 +27,12 @@ struct Triangle
     point3::Point
 end
 
-function inset(t::Triangle, inset)
-    # translate each edge in appropriate direction
-    # find new vertices through intersection.
+legs(t::Triangle) = [ Line(t.point1, t.point2),
+                      Line(t.point2, t.point3),
+                      Line(t.point3, t.point1) ]
 
+
+function inset(t::Triangle, inset)
     # Translate the edge designated by p1, p2 in the p3 direction by
     # inset:
     function translated_edge(p1, p2, p3)
@@ -43,9 +45,10 @@ function inset(t::Triangle, inset)
     edge12 = translated_edge(t.point1, t.point2, t.point3)
     edge23 = translated_edge(t.point2, t.point3, t.point1)
     edge31 = translated_edge(t.point3, t.point1, t.point2)
-    Triangle(intersetction(edge12, edge23),
-             intersetction(edge23, edge31),
-             intersetction(edge31, edge12))
+    # Preserve vertex order:
+    Triangle(intersetction(edge12, edge31),
+             intersetction(edge23, edge12),
+             intersetction(edge31, edge23))
 end
 
 function svg(t::Triangle, style)
@@ -69,9 +72,11 @@ struct Leg
     y2
 
     function Leg(x1, y1, thickness)
-        @assert thickness > 0u"inch"
+        @assert thickness > zero(x1)
         new(x1, y1, x1 + thickness, y1 + thickness)
     end
+
+    Leg(p::Point, thickness) = Leg(p.x, p.y, thickness)
 end
 
 function Leg(; center::Point, thickness)
@@ -86,7 +91,12 @@ height(leg::Leg) = leg.y2 - leg.y1
 
 center(leg::Leg) = ((leg.x1 + leg.x2) / 2,
                     (leg.y1 + leg.y2) / 2)
-     
+
+thickness(leg::Leg) = leg.x2 - leg.x1
+
+ShaperOriginDesignLib.translate(leg::Leg, delta_x, delta_y) =
+    Leg(leg.x1 + delta_x, leg.y1 + delta_y, thickness(leg))
+
 
 function svg(leg::Leg, attrs...)
     elt("g",
@@ -146,6 +156,8 @@ struct NightstandModel
     tenon_length
 
     # Derived properties:
+    perimeter
+    inset_triangle
     imaginary_right_angle_leg
     raleg1
     raleg2
@@ -159,20 +171,32 @@ struct NightstandModel
                              leg_inset,
                              leg_thickness,
                              tenon_length)
+        z = zero(nightstand_height)
+        perimeter = Triangle(
+            Point(z, z),   # point1 is the right angle.
+            Point(z, triangle_leg_distance),
+            Point(triangle_leg_distance, z))
+        inset_triangle = inset(perimeter, leg_inset)
+        hypotanuse = argmax(distance, legs(inset_triangle))
+        imaginary_right_angle_leg = Leg(inset_triangle.point1, leg_thickness)
+        raleg1 = translate(imaginary_right_angle_leg, leg_thickness, z)
+        leg1 = translate(raleg1,
+                         (point(hypotanuse; y = raleg1.y2)
+                          - Point(raleg1.x2, raleg1.y2))...)
+        raleg2 = translate(imaginary_right_angle_leg, z, leg_thickness)
+        leg2 = translate(raleg2,
+                         (point(hypotanuse; x = raleg2.x2)
+                          - Point(raleg2.x2, raleg2.y2))...)
         new(nightstand_height,
             top_thickness,
             triangle_leg_distance,
             leg_inset,
             leg_thickness,
             tenon_length,
-            Leg(leg_inset, leg_inset, leg_thickness),  # imaginary_right_angle_leg
-            Leg(leg_inset, leg_inset + leg_thickness, leg_thickness),  # raleg1
-            Leg(leg_inset + leg_thickness, leg_inset, leg_thickness),  # raleg2
-            # We subtract leg_inset twice because a Leg is specified
-            # by its top left corner:
-            Leg(leg_inset, triangle_leg_distance - 2 * leg_inset, leg_thickness), # leg1
-            Leg(triangle_leg_distance - 2 * leg_inset, leg_inset, leg_thickness)  # leg2
-            )
+            # perimeter:
+            perimeter, inset_triangle,
+            imaginary_right_angle_leg,
+            raleg1, raleg2, leg1, leg2)
     end
 end
 
@@ -214,16 +238,7 @@ end
 
 
 function top_outline(nsm::NightstandModel)
-    perimeter = Triangle(
-        Point(0u"inch", nsm.triangle_leg_distance),
-        Point(0u"inch", 0u"inch"),
-        Point(nsm.triangle_leg_distance, 0u"inch"))
     corner_radius = nsm.leg_inset
-    imaginary_right_angle_leg = nsm.imaginary_right_angle_leg
-    raleg1 = nsm.raleg1 
-    raleg2 = nsm.raleg2
-    leg1 = nsm.leg1
-    leg2 = nsm.leg2
     leg_rect_args = [
         :style => shaper_style_string(:guide_line)
     ]
@@ -242,39 +257,39 @@ function top_outline(nsm::NightstandModel)
             elt("path",
                 :style => shaper_style_string(:outside_cut),
                 :d => pathd(
-                    [ "M", arc_point(center(leg1)..., 180°, corner_radius)... ],
-                    [ "L", arc_point(center(imaginary_right_angle_leg)...,
+                    [ "M", arc_point(center(nsm.leg1)..., 180°, corner_radius)... ],
+                    [ "L", arc_point(center(nsm.imaginary_right_angle_leg)...,
                                      180°, corner_radius)... ],
                     [ "A", corner_radius, corner_radius,
                       0, 0, 1,
-                      arc_point(center(imaginary_right_angle_leg)...,
+                      arc_point(center(nsm.imaginary_right_angle_leg)...,
                                      -90°, corner_radius)... ],
-                    [ "L", arc_point(center(leg2)..., -90°, corner_radius)... ],
+                    [ "L", arc_point(center(nsm.leg2)..., -90°, corner_radius)... ],
                     [ "A", corner_radius, corner_radius,
                       0, 0, 1,
-                      arc_point(center(leg2)..., 45°, corner_radius)... ],
-                    [ "L", arc_point(center(leg1)..., 45°, corner_radius)... ],
+                      arc_point(center(nsm.leg2)..., 45°, corner_radius)... ],
+                    [ "L", arc_point(center(nsm.leg1)..., 45°, corner_radius)... ],
                     [ "A", corner_radius, corner_radius,
                       0, 0, 1,
-                      arc_point(center(leg1)..., 180°, corner_radius)... ])),
+                      arc_point(center(nsm.leg1)..., 180°, corner_radius)... ])),
             elt("path",
                 :style => shaper_style_string(:guide_line),
                  :d => pathd(
-                    [ "M", center(leg1)... ],
-                    [ "L", center(imaginary_right_angle_leg)... ],
-                    [ "L", center(leg2)... ],
-                    [ "L", center(leg1)... ])),
-            svg(perimeter, shaper_style_string(:guide_line)),
-            svg(inset(perimeter, nsm.leg_inset),
+                    [ "M", center(nsm.leg1)... ],
+                    [ "L", center(nsm.imaginary_right_angle_leg)... ],
+                    [ "L", center(nsm.leg2)... ],
+                    [ "L", center(nsm.leg1)... ])),
+            svg(nsm.perimeter, shaper_style_string(:guide_line)),
+            svg(nsm.inset_triangle,
                 shaper_style_string(:guide_line)),
-            svg(raleg1, leg_rect_args...),
-            svg(raleg2, leg_rect_args...),
-            svg(leg1, leg_rect_args...),
-            svg(leg2, leg_rect_args...),
-            center_mark(center(raleg1)...),
-            center_mark(center(raleg2)...),
-            center_mark(center(leg1)...),
-            center_mark(center(leg2)...)
+            svg(nsm.raleg1, leg_rect_args...),
+            svg(nsm.raleg2, leg_rect_args...),
+            svg(nsm.leg1, leg_rect_args...),
+            svg(nsm.leg2, leg_rect_args...),
+            center_mark(center(nsm.raleg1)...),
+            center_mark(center(nsm.raleg2)...),
+            center_mark(center(nsm.leg1)...),
+            center_mark(center(nsm.leg2)...)
             ))
 end
 
