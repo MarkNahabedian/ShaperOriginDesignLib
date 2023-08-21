@@ -89,8 +89,8 @@ end
 width(leg::Leg) = leg.x2 - leg.x1
 height(leg::Leg) = leg.y2 - leg.y1
 
-center(leg::Leg) = ((leg.x1 + leg.x2) / 2,
-                    (leg.y1 + leg.y2) / 2)
+center(leg::Leg) = [(leg.x1 + leg.x2) / 2,
+                    (leg.y1 + leg.y2) / 2]
 
 thickness(leg::Leg) = leg.x2 - leg.x1
 
@@ -238,6 +238,7 @@ end
 
 
 function top_outline(nsm::NightstandModel)
+    z = zero(nsm.nightstand_height)
     corner_radius = nsm.leg_inset
     leg_rect_args = [
         :style => shaper_style_string(:guide_line)
@@ -255,7 +256,27 @@ function top_outline(nsm::NightstandModel)
             # Invert Y axis for conventional coordinate system:
             :transform => "translate(0, $(svgval(nsm.triangle_leg_distance))) scale(1 -1)",
             elt("path",
-                :style => shaper_style_string(:outside_cut),
+                # :style => shaper_style_string(:outside_cut),
+                :style => "fill: none; stroke: green; stroke-width: 5px; vector-effect: non-scaling-stroke",
+                :d => pathd(
+                    let
+                        c = center(nsm.imaginary_right_angle_leg)
+                        # how far the center of
+                        # imaginary_right_angle_leg is inset:
+                        ci = nsm.leg_thickness/2 + nsm.leg_inset
+                        l1c = Point(center(nsm.leg1)...)
+                        # Arc radius at the acute angle corners:
+                        cr = sqrt(2 * (nsm.leg_thickness/2 + nsm.leg_inset)^2)
+                        [
+                            [ "M", nsm.leg2.x1 - nsm.leg_inset, nsm.leg2.y2 ],
+                            [ "L", c[1] - ci, c[2] ],
+                            [ "A", ci, ci, 0, 0, 1, c[1], c[2] - ci ],
+                            [ "L", (l1c + Point(ci, -ci))... ],
+                            [ "A", cr, cr, 0, 0, 1, (l1c + Point(ci, ci))... ]
+                            
+                        ]
+                    end...)
+                #=
                 :d => pathd(
                     [ "M", arc_point(center(nsm.leg1)..., 180°, corner_radius)... ],
                     [ "L", arc_point(center(nsm.imaginary_right_angle_leg)...,
@@ -271,7 +292,9 @@ function top_outline(nsm::NightstandModel)
                     [ "L", arc_point(center(nsm.leg1)..., 45°, corner_radius)... ],
                     [ "A", corner_radius, corner_radius,
                       0, 0, 1,
-                      arc_point(center(nsm.leg1)..., 180°, corner_radius)... ])),
+                      arc_point(center(nsm.leg1)..., 180°, corner_radius)... ])
+                =#
+                    ),
             elt("path",
                 :style => shaper_style_string(:guide_line),
                  :d => pathd(

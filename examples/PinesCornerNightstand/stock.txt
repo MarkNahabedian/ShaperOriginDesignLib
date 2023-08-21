@@ -7,4 +7,4 @@ tenon_length	0.75 inch
 hypotenuse	23.335 inch 	max 33.0 inch
 
 4 legs, 27.25 inch each.
-4 stringers, 12.0 inch each.
+4 stringers, 8.585786437626904 inch each.
