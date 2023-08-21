@@ -271,13 +271,15 @@ function top_outline(nsm::NightstandModel)
                             [ "L", c[1] - ci, c[2] ],
                             [ "A", ci, ci, 0, 0, 1, c[1], c[2] - ci ],
                             [ "L", nsm.leg1.x2, nsm.leg1.y1 - nsm.leg_inset ],
+                            [ "Q", nsm.perimeter.point3...,
+                              ([ nsm.leg1.x2, nsm.leg1.y2 ] + [r2, r2])... ],
+                        #=
                             [ "C", nsm.leg1.x1, nsm.leg1.y1 - nsm.leg_inset,
                               nsm.perimeter.point3...,
                               ([ nsm.leg1.x2, nsm.leg1.y2 ] + [r2, r2])...],
+                        =#
                             [ "L", ([ nsm.leg2.x2, nsm.leg2.y2 ] + [r2, r2])... ],
-                            [ "C", nsm.perimeter.point2...,
-                              nsm.perimeter.point2...,
-                              startend... ]
+                            [ "Q", nsm.perimeter.point2..., startend...]
                         ]
                     end...)
                 #=
