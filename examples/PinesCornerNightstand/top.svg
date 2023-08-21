@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:shaper="http://www.shapertools.com/namespaces/shaper" viewBox="-3 -3 22.5 22.5" width="90%">
   <g transform="translate(0, 16.5) scale(1 -1)">
-    <path style="fill: none; stroke: green; stroke-width: 5px; vector-effect: non-scaling-stroke" d="M 0.000000 12.585786 L 0.000000 1.750000 A 1.750000 1.750000 0 0 1 1.750000 0.000000 L 13.585786 0.000000 A 2.474874 2.474874 0 0 1 13.585786 3.500000"/>
+    <path style="fill: none; stroke: green; stroke-width: 5px; vector-effect: non-scaling-stroke" d="M 0.000000 12.585786 L 0.000000 1.750000 A 1.750000 1.750000 0 0 1 1.750000 0.000000 L 12.585786 0.000000 C 11.085786 0.000000 16.500000 0 13.292893 3.207107 L 3.207107 13.292893 C 0 16.500000 0 16.500000 0.000000 12.585786"/>
     <path style="fill: none; stroke: blue; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;" d="M 11.835786 1.750000 L 1.750000 1.750000 L 1.750000 11.835786 L 11.835786 1.750000"/>
     <g class="Triangle">
       <path d="M 0 0 L 0 16.500000 L 16.500000 0 z" style="fill: none; stroke: blue; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>

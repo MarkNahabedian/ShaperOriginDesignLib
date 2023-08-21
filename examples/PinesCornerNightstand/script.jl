@@ -264,16 +264,20 @@ function top_outline(nsm::NightstandModel)
                         # how far the center of
                         # imaginary_right_angle_leg is inset:
                         ci = nsm.leg_thickness/2 + nsm.leg_inset
-                        l1c = Point(center(nsm.leg1)...)
-                        # Arc radius at the acute angle corners:
-                        cr = sqrt(2 * (nsm.leg_thickness/2 + nsm.leg_inset)^2)
+                        r2 = nsm.leg_inset / sqrt(2)
+                        startend = Point(nsm.leg2.x1 - nsm.leg_inset, nsm.leg2.y2)
                         [
-                            [ "M", nsm.leg2.x1 - nsm.leg_inset, nsm.leg2.y2 ],
+                            [ "M", startend... ],
                             [ "L", c[1] - ci, c[2] ],
                             [ "A", ci, ci, 0, 0, 1, c[1], c[2] - ci ],
-                            [ "L", (l1c + Point(ci, -ci))... ],
-                            [ "A", cr, cr, 0, 0, 1, (l1c + Point(ci, ci))... ]
-                            
+                            [ "L", nsm.leg1.x2, nsm.leg1.y1 - nsm.leg_inset ],
+                            [ "C", nsm.leg1.x1, nsm.leg1.y1 - nsm.leg_inset,
+                              nsm.perimeter.point3...,
+                              ([ nsm.leg1.x2, nsm.leg1.y2 ] + [r2, r2])...],
+                            [ "L", ([ nsm.leg2.x2, nsm.leg2.y2 ] + [r2, r2])... ],
+                            [ "C", nsm.perimeter.point2...,
+                              nsm.perimeter.point2...,
+                              startend... ]
                         ]
                     end...)
                 #=
