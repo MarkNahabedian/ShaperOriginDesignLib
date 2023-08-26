@@ -5,39 +5,42 @@ using DataStructures: OrderedDict
 export shaper_cut_attributes, shaper_style_string, shaper_cut_depth
 
 shaper_cut_attributes = Dict(
-	:inside_cut => OrderedDict(
-		"fill" => "white",
-		"stroke" => "black",
-		"stroke-width" => "1px",
-		"opacity" => "1.0",
-                "vector-effect" => "non-scaling-stroke"
-        ),
-	:outside_cut => OrderedDict(
-		"fill" => "black",
-		"stroke" => "black",
-		"stroke-width" => "1px",
-		"opacity" => "1.0"
-	),
-	:on_line_cut => OrderedDict(
-		"fill" => "none",
-		"stroke" => "rgb(70 70 70)",     # "gray"
-		"stroke-width" => "1px",
-		"opacity" => "1.0",
-                "vector-effect" => "non-scaling-stroke"
-	),
-	:pocket_cut => OrderedDict(
-		"fill" => "rgb(175 175 175)",       # "gray"
-		"stroke" => "none",
-		"opacity" => "1.0"
-	),
-	:guide_line => OrderedDict(
-		"fill" => "none",
-		"stroke" => "blue",
-		"stroke-width" => "1px",
-		"opacity" => "1.0",
-                "vector-effect" => "non-scaling-stroke"
-	)
+    :inside_cut => OrderedDict(
+	"fill" => "white",
+	"stroke" => "black",
+	"stroke-width" => "1px",
+	"opacity" => "1.0",
+        "vector-effect" => "non-scaling-stroke"
+    ),
+    :outside_cut => OrderedDict(
+	"fill" => "black",
+	"stroke" => "black",
+	"stroke-width" => "1px",
+	"opacity" => "1.0",
+        "vector-effect" => "non-scaling-stroke"
+    ),
+    :on_line_cut => OrderedDict(
+	"fill" => "none",
+	"stroke" => "rgb(70 70 70)",     # "gray"
+	"stroke-width" => "1px",
+	"opacity" => "1.0",
+        "vector-effect" => "non-scaling-stroke"
+    ),
+    :pocket_cut => OrderedDict(
+	"fill" => "rgb(175 175 175)",       # "gray"
+	"stroke" => "none",
+	"opacity" => "1.0",
+        "vector-effect" => "non-scaling-stroke"
+    ),
+    :guide_line => OrderedDict(
+	"fill" => "none",
+	"stroke" => "blue",
+	"stroke-width" => "1px",
+	"opacity" => "1.0",
+        "vector-effect" => "non-scaling-stroke"
+    )
 )
+
 
 """
     shaper_style_string(cut_type::Symbol)::String

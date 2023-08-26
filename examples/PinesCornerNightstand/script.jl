@@ -256,8 +256,8 @@ function top_outline(nsm::NightstandModel)
             # Invert Y axis for conventional coordinate system:
             :transform => "translate(0, $(svgval(nsm.triangle_leg_distance))) scale(1 -1)",
             elt("path",
-                # :style => shaper_style_string(:outside_cut),
-                :style => "fill: none; stroke: green; stroke-width: 5px; vector-effect: non-scaling-stroke",
+                :style => shaper_style_string(:outside_cut),
+                # :style => "fill: none; stroke: green; stroke-width: 5px; vector-effect: non-scaling-stroke",
                 :d => pathd(
                     let
                         c = center(nsm.imaginary_right_angle_leg)
