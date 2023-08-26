@@ -363,6 +363,28 @@ write_measurement_file(NIGHTSTAND_MODEL, "stock.txt")
 write_top_outline_file(NIGHTSTAND_MODEL, "top.svg")
 
 
+let
+    lt = NIGHTSTAND_MODEL.leg_thickness
+    CUTTER_DIAMETER = 0.25u"inch"
+    tenon_length = 0.75u"inch"
+    tenon_size = 0.5u"inch"
+    svg = elt("svg",
+              namespace_attributes()...,
+              viewport_attributes(
+                  - SVG_MARGIN,
+                  - SVG_MARGIN,
+                  lt + SVG_MARGIN,
+                  lt + SVG_MARGIN,
+                  u"inch", false)...,
+              :width => "90%",
+              tenon(tenon_length, CUTTER_DIAMETER,
+                    tenon_size, tenon_size,
+                    lt, lt,
+                    0.25u"inch"))
+    XML.write("mortise_and_tenon.svg", svg)
+end
+
+
 ################################################################################
 
 struct Hinge
@@ -449,4 +471,5 @@ let
     svg = hinge_mortise(LEG_HINGE)
     XML.write("hinge_mortise.svg", svg)
 end
+
 
