@@ -266,41 +266,37 @@ function top_outline(nsm::NightstandModel)
                         ci = nsm.leg_thickness/2 + nsm.leg_inset
                         r2 = nsm.leg_inset / sqrt(2)
                         startend = Point(nsm.leg2.x1 - nsm.leg_inset, nsm.leg2.y2)
+                        corner_roundness = 1.5
+                        # Table top perimeter counterclockwise
+                        # starting from left hand edge in the SVG
+                        # drawing:
                         [
                             [ "M", startend... ],
-                            [ "L", c[1] - ci, c[2] ],
-                            [ "A", ci, ci, 0, 0, 1, c[1], c[2] - ci ],
-                            [ "L", nsm.leg1.x2, nsm.leg1.y1 - nsm.leg_inset ],
-                            [ "Q", nsm.perimeter.point3...,
-                              ([ nsm.leg1.x2, nsm.leg1.y2 ] + [r2, r2])... ],
-                        #=
-                            [ "C", nsm.leg1.x1, nsm.leg1.y1 - nsm.leg_inset,
-                              nsm.perimeter.point3...,
-                              ([ nsm.leg1.x2, nsm.leg1.y2 ] + [r2, r2])...],
-                        =#
-                            [ "L", ([ nsm.leg2.x2, nsm.leg2.y2 ] + [r2, r2])... ],
-                            [ "Q", nsm.perimeter.point2..., startend...]
-                        ]
-                    end...)
-                #=
-                :d => pathd(
-                    [ "M", arc_point(center(nsm.leg1)..., 180°, corner_radius)... ],
-                    [ "L", arc_point(center(nsm.imaginary_right_angle_leg)...,
-                                     180°, corner_radius)... ],
-                    [ "A", corner_radius, corner_radius,
-                      0, 0, 1,
-                      arc_point(center(nsm.imaginary_right_angle_leg)...,
-                                     -90°, corner_radius)... ],
-                    [ "L", arc_point(center(nsm.leg2)..., -90°, corner_radius)... ],
-                    [ "A", corner_radius, corner_radius,
-                      0, 0, 1,
-                      arc_point(center(nsm.leg2)..., 45°, corner_radius)... ],
-                    [ "L", arc_point(center(nsm.leg1)..., 45°, corner_radius)... ],
-                    [ "A", corner_radius, corner_radius,
-                      0, 0, 1,
-                      arc_point(center(nsm.leg1)..., 180°, corner_radius)... ])
-                =#
-                    ),
+                            [ "L", c[1] - ci, c[2] ],   # left edge
+                            [ "A", ci, ci, 0, 0, 1, c[1], c[2] - ci ],   # right angle corner
+                            let
+                                p1 = Point(nsm.leg1.x2, nsm.leg1.y1 - nsm.leg_inset)
+                                p2 = Point(nsm.leg1.x2, nsm.leg1.y2) + Point(r2, r2)
+                                [
+                                    [ "L", p1... ],   # bottom edge
+                                    [ "C",
+                                      (p1 + corner_roundness * (1u"inch") * Point(1, 0))...,
+                                      (p2 + corner_roundness * (1u"inch") * Point(1, -1))...,
+                                      p2... ]
+                                ]
+                            end...,
+                            let
+                                p1 = Point(nsm.leg2.x2, nsm.leg2.y2 ) + Point(r2, r2)
+                                [
+                                    [ "L", p1... ],
+                                    [ "C",
+                                      (p1 + corner_roundness * (1u"inch") * Point(-1, 1))...,
+                                      (startend + corner_roundness * (1u"inch") * Point(0, 1))...,
+                                      startend... ]
+                                ]
+                            end...
+                                ]
+                    end...)),
             elt("path",
                 :style => shaper_style_string(:guide_line),
                  :d => pathd(
