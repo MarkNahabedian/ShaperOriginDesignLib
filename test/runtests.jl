@@ -75,6 +75,7 @@ end
         @test direction(line) == pi/2
         @test intercept(line) == Point(2, 0)
     end
+    @test distance(normalize(Point(1.0u"inch", 2.54u"cm"))) == 1.0
     let
         p1 = Point(0.0, 0.0)
         p2 = Point(1.0, 0.0)
