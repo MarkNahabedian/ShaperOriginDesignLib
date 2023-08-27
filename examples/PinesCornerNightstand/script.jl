@@ -10,6 +10,7 @@ using XML
 using Unitful
 using UnitfulUS
 using ShaperOriginDesignLib
+using Printf
 import Unitful: °
 
 
@@ -231,6 +232,15 @@ function show_parameters(io::IO, nsm::NightstandModel)
     println(io, "tenon_length\t$(nsm.tenon_length)")
     hypotenuse = sqrt(2 * nsm.triangle_leg_distance * nsm.triangle_leg_distance)
     println(io, "hypotenuse\t$(rnd(hypotenuse)) \tmax $(rnd(MAX_HYPOTENUSE))")
+    function leg(l)
+        c = center(l)
+        @sprintf("\n\t%3.3f\t%3.3f", ustrip(c[1]), ustrip(c[2]))
+        end
+    println(io, "\nLeg positions:",
+            leg(nsm.leg1),
+            leg(nsm.raleg1),
+            leg(nsm.raleg2),
+            leg(nsm.leg2))
 end
 
 
