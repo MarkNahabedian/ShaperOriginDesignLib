@@ -88,3 +88,11 @@ end
         @test intersetction(line31, line12) == p1
     end
 end
+
+@testset "pathd" begin
+    @test pathd(["M", 1u"inch", 2.54u"cm"]) == "M 1 1.000000"
+    @test pathd(["M", 0, 0],
+                ["l", 0.5u"inch", 1u"inch", Point(1u"inch", 2u"inch")], ["z"]) ==
+                    "M 0 0 l 0.500000 1 1 2 z"
+end
+

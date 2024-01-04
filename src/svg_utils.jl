@@ -1,5 +1,5 @@
 
-export svgval, SVG_UNITS, namespace_attributes, viewport_attributes, pathd, center_mark
+export svgval, svglength, SVG_UNITS, namespace_attributes, viewport_attributes, pathd, center_mark
 
 
 """
@@ -22,6 +22,12 @@ SVG_UNITS = Dict{Unitful.Units, String}(
     u"mm" => "mm",
     u"inch" => "in"
 )
+
+svglength(x::Number) = x
+
+function svglength(x::Quantity)
+    "$(svgval(x))$(SVG_UNITS[unit(x)])"
+end
 
 
 """
@@ -56,6 +62,8 @@ function viewport_attributes(left::Unitful.Length, top::Unitful.Length,
     height = bottom - top
     result = [:viewBox => "$left $top $width $height" ]
     if include_width_and_height
+        ### PROBLEM: Without this, we fail to specify units for our
+        ### measurtements.
         push!(result,
               :width => "$width$(SVG_UNITS[to_units])",
               :height => "$height$(SVG_UNITS[to_units])")
@@ -71,9 +79,10 @@ end
 Each step is an array of a path step letter, e.g. `M`, `L`, `h` and
 the parameters for that step.
 A string suitable for use as the `d` attribute of an SVG `path`
-element is retuirned.
+element is returned.
 """
 function pathd(steps...)
+    steps = map(svg_pathd, steps)
     d = IOBuffer()
     needspace = false
     function putd(token)
@@ -81,13 +90,15 @@ function pathd(steps...)
 	    write(d, " ")
             needspace = false
 	end
-	if token isa String
+	if token isa Char
 	    write(d, token)
             needspace = true
-	elseif token isa Symbol
+	elseif token isa Symbol     # deprecated case
+            error("Shouldn't get here")
 	    putd(string(token))
             needspace = true
-	elseif token isa Quantity
+	elseif token isa Quantity   # deprecated case
+            error("Shouldn't get here")
 	    putd(svgval(token))
             needspace = true
 	elseif token isa Integer
@@ -96,7 +107,8 @@ function pathd(steps...)
 	elseif token isa Real
 	    @printf(d, "%3f", token)
             needspace = true
-        elseif token isa Point
+        elseif token isa Point      # deprecated case
+            error("Shouldn't get here")
             putd(token.x)
             putd(token.y)
 	else
@@ -122,7 +134,7 @@ end
 
 Mark the center where a hole is to be drilled.
 
-For Shaper Origin, this is a represented as a path of two lines that
+For Shaper Origin, this is represented as a path of two lines that
 meet at an angle.  Origin is positioned so that the intersection is in
 the cut window but outside the acute angle, such that plunging and
 withdrawing with an angles engraving bit will center drill the hole.
@@ -137,9 +149,9 @@ function center_mark(x::Unitful.Length, y::Unitful.Length,
                         [ "L", x, y - tail_length ]),
             :style => shaper_style_string(:on_line_cut)),
         elt("circle",
-            :cx => svgval(x),
-            :cy => svgval(y),
-            :r => svgval(tail_length),
+            :cx => svglength(x),
+            :cy => svglength(y),
+            :r => svglength(tail_length),
             :style => shaper_style_string(:guide_line))
         )
 end
