@@ -5,17 +5,15 @@ using Unitful
 using UnitfulUS
 using XML
 
-export SVG_NAMESPACE, SHAPER_NAMESPACE
+export SVG_NAMESPACE, SHAPER_NAMESPACE, user_units_val
 
 SVG_NAMESPACE = "http://www.w3.org/2000/svg"
 SHAPER_NAMESPACE = "http://www.shapertools.com/namespaces/shaper"
 
-export SVG_USER_LENGTH_UNIT, user_units_val
-
-SVG_USER_LENGTH_UNIT = u"inch"
 
 user_units_val(n::Number) = n
-user_units_val(n::Quantity) = svgval(uconvert(SVG_USER_LENGTH_UNIT, n))
+user_units_val(n::Quantity) =
+    svgval(uconvert(task_local_storage(:SVG_USER_LENGTH_UNIT), n))
 
 
 include("elt.jl")

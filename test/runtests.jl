@@ -6,27 +6,31 @@ using UnitfulUS
 using Test
 
 @testset "ShaperOriginDesignLib.jl" begin
-    @test svgval(1.5) == 1.5
-    @test svgval(4.5u"inch") == 4.5
-    d = pathd(
-        ["M", 0, 0],
-        ["h", 3u"cm"],
-        ["v", 4u"cm"],
-        ["z"]
-    )
-    @test d == @sprintf("M 0 0 h %3f v %3f z",
-                        3 / 2.54, 4 / 2.54)
-    @test shaper_style_string(:on_line_cut) ==
-        "fill: none; stroke: rgb(70 70 70); stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"
+    with_svg_user_length_unit(u"inch") do
+        @test svgval(1.5) == 1.5
+        @test svgval(4.5u"inch") == 4.5
+        d = pathd(
+            ["M", 0, 0],
+            ["h", 3u"cm"],
+            ["v", 4u"cm"],
+            ["z"]
+        )
+        @test d == @sprintf("M 0 0 h %3f v %3f z",
+                            3 / 2.54, 4 / 2.54)
+        @test shaper_style_string(:on_line_cut) ==
+            "fill: none; stroke: rgb(70 70 70); stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"
+    end
 end
 
 @testset "viewport_attributes" begin
-    left, top, right, bottom = (0.0u"inch", 0.0u"cm", 5.0u"inch", 2.54u"cm")
-    attrs = viewport_attributes(left, top, right, bottom, u"inch")
-    d = Dict(attrs)
-    @test d[:width] == "5.0in"
-    @test d[:height] == "1.0in"
-    @test d[:viewBox] == "0.0 0.0 5.0 1.0"
+    with_svg_user_length_unit(u"inch") do
+        left, top, right, bottom = (0.0u"inch", 0.0u"cm", 5.0u"inch", 2.54u"cm")
+        attrs = viewport_attributes(left, top, right, bottom)
+        d = Dict(attrs)
+        @test d[:width] == "5.0in"
+        @test d[:height] == "1.0in"
+        @test d[:viewBox] == "0.0 0.0 5.0 1.0"
+    end
 end
 
 @testset "geometry" begin
@@ -90,9 +94,12 @@ end
 end
 
 @testset "pathd" begin
-    @test pathd(["M", 1u"inch", 2.54u"cm"]) == "M 1 1.000000"
-    @test pathd(["M", 0, 0],
-                ["l", 0.5u"inch", 1u"inch", Point(1u"inch", 2u"inch")], ["z"]) ==
-                    "M 0 0 l 0.500000 1 1 2 z"
+    with_svg_user_length_unit(u"inch") do
+        @test pathd(["M", 1u"inch", 2.54u"cm"]) == "M 1 1.000000"
+        @test pathd(["M", 0, 0],
+                    ["l", 0.5u"inch", 1u"inch",
+                     Point(1u"inch", 2u"inch")], ["z"]) ==
+                         "M 0 0 l 0.500000 1 1 2 z"
+    end
 end
 
