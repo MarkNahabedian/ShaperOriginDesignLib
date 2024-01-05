@@ -1,23 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:shaper="http://www.shapertools.com/namespaces/shaper" viewBox="-3 -3 6.764 7.0" width="90%">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:shaper="http://www.shapertools.com/namespaces/shaper" viewBox="-3 -3 6.764 7.0" width="90%" height="7.0in">
   <g>
     <path d="M 0 0 h 0.764000 v 1.000000 h -0.764000 z" style="fill: rgb(175 175 175); stroke: none; opacity: 1.0; vector-effect: non-scaling-stroke;" shaper:cutDepth="0.03"/>
     <path d="M 0 0.500000 h 0.764000" style="fill: none; stroke: blue; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
     <path class="custom_anchor" style="fill:red; stroke=none;" d="M 0.382000 0.500000 h 0.250000 L 0.382000 0.000000 z"/>
     <g class="center_mark">
       <path d="M -0.003000 0.205000 L 0.097000 0.205000 L 0.097000 0.105000" style="fill: none; stroke: rgb(70 70 70); stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
-      <circle cx="0.097" cy="0.20499999999999996" r="0.1" style="fill: none; stroke: blue; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
+      <circle cx="0.097in" cy="0.20499999999999996in" r="0.1in" style="fill: none; stroke: blue; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
     </g>
     <g class="center_mark">
       <path d="M 0.567000 0.205000 L 0.667000 0.205000 L 0.667000 0.105000" style="fill: none; stroke: rgb(70 70 70); stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
-      <circle cx="0.667" cy="0.20499999999999996" r="0.1" style="fill: none; stroke: blue; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
+      <circle cx="0.667in" cy="0.20499999999999996in" r="0.1in" style="fill: none; stroke: blue; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
     </g>
     <g class="center_mark">
       <path d="M -0.003000 0.795000 L 0.097000 0.795000 L 0.097000 0.695000" style="fill: none; stroke: rgb(70 70 70); stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
-      <circle cx="0.097" cy="0.795" r="0.1" style="fill: none; stroke: blue; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
+      <circle cx="0.097in" cy="0.795in" r="0.1in" style="fill: none; stroke: blue; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
     </g>
     <g class="center_mark">
       <path d="M 0.567000 0.795000 L 0.667000 0.795000 L 0.667000 0.695000" style="fill: none; stroke: rgb(70 70 70); stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
-      <circle cx="0.667" cy="0.795" r="0.1" style="fill: none; stroke: blue; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
+      <circle cx="0.667in" cy="0.795in" r="0.1in" style="fill: none; stroke: blue; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
     </g>
   </g>
 </svg>

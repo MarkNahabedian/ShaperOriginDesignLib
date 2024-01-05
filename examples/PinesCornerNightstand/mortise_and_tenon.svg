@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:shaper="http://www.shapertools.com/namespaces/shaper" viewBox="-3 -3 7.5 7.5" width="90%">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:shaper="http://www.shapertools.com/namespaces/shaper" viewBox="-3 -3 7.5 7.5" width="90%" height="7.5in">
   <g class="tenon">
-    <rect x="-0.25" y="-0.25" width="2.0" height="2.0" shaper:cutDepth="0.75" style="fill: rgb(175 175 175); stroke: none; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
-    <rect x="0.5" y="0.5" width="0.5" height="0.5" rx="0.125" ry="0.125" style="fill: black; stroke: black; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
-    <rect x="0" y="0" width="1.5" height="1.5" style="fill: none; stroke: blue; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
+    <rect x="-0.25in" y="-0.25in" width="2.0in" height="2.0in" shaper:cutDepth="0.75" style="fill: rgb(175 175 175); stroke: none; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
+    <rect x="0.5in" y="0.5in" width="0.5in" height="0.5in" rx="0.125in" ry="0.125in" style="fill: black; stroke: black; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
+    <rect x="0" y="0" width="1.5in" height="1.5in" style="fill: none; stroke: blue; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>
   </g>
 </svg>

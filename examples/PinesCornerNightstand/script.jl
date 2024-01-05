@@ -217,8 +217,10 @@ stringer_length(nsm::NightstandModel) =
     )
 
 function write_top_outline_file(nsm::NightstandModel, filename)
-    svg = top_outline(nsm)
-    XML.write(filename, svg)
+    with_svg_user_length_unit(u"inch") do
+        svg = top_outline(nsm)
+        XML.write(filename, svg)
+    end
 end
 
 function show_parameters(io::IO, nsm::NightstandModel)
@@ -259,8 +261,7 @@ function top_outline(nsm::NightstandModel)
             - SVG_MARGIN,
             - SVG_MARGIN,
             nsm.triangle_leg_distance + SVG_MARGIN,
-            nsm.triangle_leg_distance + SVG_MARGIN,
-            u"inch", false)...,
+            nsm.triangle_leg_distance + SVG_MARGIN)...,
 	:width => "90%",
         elt("g",
             # Invert Y axis for conventional coordinate system:
@@ -330,8 +331,10 @@ end
 
 
 function write_top_outline_file(nsm::NightstandModel, filename)
-    svg = top_outline(nsm)
-    XML.write(filename, svg)
+    with_svg_user_length_unit(u"inch") do
+        svg = top_outline(nsm)
+        XML.write(filename, svg)
+    end
 end
 
 
@@ -374,24 +377,25 @@ write_top_outline_file(NIGHTSTAND_MODEL, "top.svg")
 
 
 let
-    lt = NIGHTSTAND_MODEL.leg_thickness
-    CUTTER_DIAMETER = 0.25u"inch"
-    tenon_length = 0.75u"inch"
-    tenon_size = 0.5u"inch"
-    svg = elt("svg",
-              namespace_attributes()...,
-              viewport_attributes(
-                  - SVG_MARGIN,
-                  - SVG_MARGIN,
-                  lt + SVG_MARGIN,
-                  lt + SVG_MARGIN,
-                  u"inch", false)...,
-              :width => "90%",
-              tenon(tenon_length, CUTTER_DIAMETER,
-                    tenon_size, tenon_size,
-                    lt, lt,
-                    0.25u"inch"))
-    XML.write("mortise_and_tenon.svg", svg)
+    with_svg_user_length_unit(u"inch") do
+        lt = NIGHTSTAND_MODEL.leg_thickness
+        CUTTER_DIAMETER = 0.25u"inch"
+        tenon_length = 0.75u"inch"
+        tenon_size = 0.5u"inch"
+        svg = elt("svg",
+                  namespace_attributes()...,
+                  viewport_attributes(
+                      - SVG_MARGIN,
+                      - SVG_MARGIN,
+                      lt + SVG_MARGIN,
+                      lt + SVG_MARGIN)...,
+                  :width => "90%",
+                  tenon(tenon_length, CUTTER_DIAMETER,
+                        tenon_size, tenon_size,
+                        lt, lt,
+                        0.25u"inch"))
+        XML.write("mortise_and_tenon.svg", svg)
+    end
 end
 
 
@@ -430,8 +434,7 @@ function hinge_mortise(hinge::Hinge)
             - SVG_MARGIN,
             - SVG_MARGIN,
             hinge.length + SVG_MARGIN,
-            hinge.width + SVG_MARGIN,
-            u"inch", false)...,
+            hinge.width + SVG_MARGIN)...,
         :width => "90%",
         elt("g",
             elt("path",
@@ -478,8 +481,10 @@ LEG_HINGE =
 
 
 let
-    svg = hinge_mortise(LEG_HINGE)
-    XML.write("hinge_mortise.svg", svg)
+    with_svg_user_length_unit(u"inch") do
+        svg = hinge_mortise(LEG_HINGE)
+        XML.write("hinge_mortise.svg", svg)
+    end
 end
 
 
