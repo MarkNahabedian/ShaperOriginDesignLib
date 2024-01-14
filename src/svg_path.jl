@@ -18,6 +18,8 @@ svg_pathd(args::Vector) = svg_pathd(args...)
 
 function svg_pathd(op, args...)
     # If any arg is a Point, spread its coordinates:
+    # We don't need to do this since the caller can use "..." on
+    # Points.
     nargs = []
     for arg in args
         if arg isa Point
