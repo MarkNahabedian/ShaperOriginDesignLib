@@ -68,7 +68,8 @@ function viewport_attributes(left::Unitful.Length, top::Unitful.Length,
                              include_width_and_height=true)
     to_units = task_local_storage(:SVG_USER_LENGTH_UNIT)
     left, top, right, bottom =
-        (x -> ustrip(to_units, x)).((left, top, right, bottom))
+        (x -> ustrip(to_units, uconvert(to_units, x))).(
+            (left, top, right, bottom))
     width = right - left
     height = bottom - top
     result = [:viewBox => "$left $top $width $height" ]
