@@ -6,7 +6,7 @@ leg_thickness	1.5 inch
 tenon_length	0.75 inch
 hypotenuse	23.335 inch 	max 33.0 inch
 
-Leg positions:
+Leg center positions:
 	11.836	1.750
 	3.250	1.750
 	1.750	3.250

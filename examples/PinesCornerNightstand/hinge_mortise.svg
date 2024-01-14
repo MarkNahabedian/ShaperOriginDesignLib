@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:shaper="http://www.shapertools.com/namespaces/shaper" viewBox="-3 -3 6.764 7.0" width="90%" height="7.0in">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:shaper="http://www.shapertools.com/namespaces/shaper" viewBox="-1 -1 2.7640000000000002 3.0" width="2.7640000000000002in" height="3.0in">
   <g>
     <path d="M 0 0 h 0.764000 v 1.000000 h -0.764000 z" style="fill: rgb(175 175 175); stroke: none; opacity: 1.0; vector-effect: non-scaling-stroke;" shaper:cutDepth="0.03"/>
     <path d="M 0 0.500000 h 0.764000" style="fill: none; stroke: blue; stroke-width: 1px; opacity: 1.0; vector-effect: non-scaling-stroke;"/>

@@ -17,7 +17,7 @@ import Unitful: °
 MAX_HYPOTENUSE = 33u"inch"
 
 # Presentation parameters
-SVG_MARGIN = 3u"inch"
+SVG_MARGIN = 1u"inch"
 
 
 ################################################################################
@@ -28,9 +28,9 @@ struct Triangle
     point3::Point
 end
 
-legs(t::Triangle) = [ Line(t.point1, t.point2),
-                      Line(t.point2, t.point3),
-                      Line(t.point3, t.point1) ]
+sides(t::Triangle) = [ Line(t.point1, t.point2),
+                       Line(t.point2, t.point3),
+                       Line(t.point3, t.point1) ]
 
 
 function inset(t::Triangle, inset)
@@ -67,10 +67,10 @@ end
 ################################################################################
 
 struct Leg
-    x1
-    y1
-    x2
-    y2
+    x1   # left    (lesser X)
+    y1   # top     (lesser Y)
+    x2   # right   (greater X)
+    y2   # bottom  (greater Y)
 
     function Leg(x1, y1, thickness)
         @assert thickness > zero(x1)
@@ -149,21 +149,31 @@ end
 
 
 struct NightstandModel
-    nightstand_height
-    top_thickness
-    triangle_leg_distance
-    leg_inset
-    leg_thickness
-    tenon_length
+    nightstand_height::Unitful.Length
+    top_thickness::Unitful.Length
+    # The length of the legs of the abstract bounding triangle:
+    triangle_leg_distance::Unitful.Length
+    leg_inset::Unitful.Length
+    # the edge of the square crosssection of a leg:
+    leg_thickness::Unitful.Length
+    tenon_length::Unitful.Length
 
     # Derived properties:
-    perimeter
-    inset_triangle
-    imaginary_right_angle_leg
-    raleg1
-    raleg2
-    leg1
-    leg2
+
+    # the bounding triangle
+    perimeter::Triangle
+    # `perimeter` inset by `leg_inset`:
+    inset_triangle::Triangle
+    # The outer edge or corner of a table leg falls on inset_triangle.
+    
+    # the Leg that would be at the right angle if we didn't have two
+    # hinged legs there in stead:
+    imaginary_right_angle_leg::Leg
+    # The real Legs:
+    raleg1::Leg   # positive X dirtection from imaginary_right_angle_leg
+    raleg2::Leg   # positive Y dirtection from imaginary_right_angle_leg
+    leg1::Leg
+    leg2::Leg
 
     function NightstandModel(;
                              nightstand_height,
@@ -178,7 +188,8 @@ struct NightstandModel
             Point(z, triangle_leg_distance),
             Point(triangle_leg_distance, z))
         inset_triangle = inset(perimeter, leg_inset)
-        hypotanuse = argmax(distance, legs(inset_triangle))
+        # The longest leg of the triangle:
+        hypotanuse = argmax(distance, sides(inset_triangle))
         imaginary_right_angle_leg = Leg(inset_triangle.point1, leg_thickness)
         raleg1 = translate(imaginary_right_angle_leg, leg_thickness, z)
         leg1 = translate(raleg1,
@@ -216,13 +227,6 @@ stringer_length(nsm::NightstandModel) =
         + 2 * nsm.tenon_length
     )
 
-function write_top_outline_file(nsm::NightstandModel, filename)
-    with_svg_user_length_unit(u"inch") do
-        svg = top_outline(nsm)
-        XML.write(filename, svg)
-    end
-end
-
 function show_parameters(io::IO, nsm::NightstandModel)
     rnd(u) = round(unit(u), u, digits=3)
     max_leg = (sqrt(MAX_HYPOTENUSE * MAX_HYPOTENUSE / 2))
@@ -238,7 +242,7 @@ function show_parameters(io::IO, nsm::NightstandModel)
         c = center(l)
         @sprintf("\n\t%3.3f\t%3.3f", ustrip(c[1]), ustrip(c[2]))
         end
-    println(io, "\nLeg positions:",
+    println(io, "\nLeg center positions:",
             leg(nsm.leg1),
             leg(nsm.raleg1),
             leg(nsm.raleg2),
@@ -257,12 +261,13 @@ function top_outline(nsm::NightstandModel)
     ]
     elt("svg",
         namespace_attributes()...,
+        # User space (0, 0) is the right angle of the abstract
+        # bounding triangle:
         viewport_attributes(
             - SVG_MARGIN,
             - SVG_MARGIN,
             nsm.triangle_leg_distance + SVG_MARGIN,
             nsm.triangle_leg_distance + SVG_MARGIN)...,
-	:width => "90%",
         elt("g",
             # Invert Y axis for conventional coordinate system:
             :transform => "translate(0, $(svgval(nsm.triangle_leg_distance))) scale(1 -1)",
@@ -276,7 +281,8 @@ function top_outline(nsm::NightstandModel)
                         # imaginary_right_angle_leg is inset:
                         ci = nsm.leg_thickness/2 + nsm.leg_inset
                         r2 = nsm.leg_inset / sqrt(2)
-                        startend = Point(nsm.leg2.x1 - nsm.leg_inset, nsm.leg2.y2)
+                        startend = Point(nsm.leg2.x1 - nsm.leg_inset,
+                                         nsm.leg2.y2)
                         corner_roundness = 1.5
                         # Table top perimeter counterclockwise
                         # starting from left hand edge in the SVG
@@ -286,8 +292,11 @@ function top_outline(nsm::NightstandModel)
                             [ "L", c[1] - ci, c[2] ],   # left edge
                             [ "A", ci, ci, 0, 0, 1, c[1], c[2] - ci ],   # right angle corner
                             let
-                                p1 = Point(nsm.leg1.x2, nsm.leg1.y1 - nsm.leg_inset)
-                                p2 = Point(nsm.leg1.x2, nsm.leg1.y2) + Point(r2, r2)
+                                p1 = Point(nsm.leg1.x2,
+                                           nsm.leg1.y1 - nsm.leg_inset)
+                                p2 = Point(nsm.leg1.x2,
+                                           nsm.leg1.y2) +
+                                               Point(r2, r2)
                                 [
                                     [ "L", p1... ],   # bottom edge
                                     [ "C",
@@ -389,11 +398,9 @@ let
                       - SVG_MARGIN,
                       lt + SVG_MARGIN,
                       lt + SVG_MARGIN)...,
-                  :width => "90%",
                   tenon(tenon_length, CUTTER_DIAMETER,
                         tenon_size, tenon_size,
-                        lt, lt,
-                        0.25u"inch"))
+                        lt, lt))
         XML.write("mortise_and_tenon.svg", svg)
     end
 end
@@ -435,7 +442,6 @@ function hinge_mortise(hinge::Hinge)
             - SVG_MARGIN,
             hinge.length + SVG_MARGIN,
             hinge.width + SVG_MARGIN)...,
-        :width => "90%",
         elt("g",
             elt("path",
                 :d => pathd([ "M", 0u"inch", 0u"inch" ],
