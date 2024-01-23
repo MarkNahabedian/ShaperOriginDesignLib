@@ -4,12 +4,9 @@
      id="Layer_1"
      xmlns:shaper="http://www.shapertools.com/namespaces/shaper"
      xmlns="http://www.w3.org/2000/svg"
-     xmlns:xlink="http://www.w3.org/1999/xlink"
-     x="0px" y="0px"
      width="252px" height="252px"
      viewBox="0 0 252 252"
-     enable-background="new 0 0 252 252"
-     xml:space="preserve">
+     >
   <g>
     <rect x="54" y="54"
           shaper:cutDepth="0.75"
