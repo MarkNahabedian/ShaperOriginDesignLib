@@ -34,7 +34,7 @@ function tenon(tenon_length, cutter_diameter,
             :width => svgval(stock_i + 2 * extra),
             :height => svgval(stock_j + 2 * extra),
             shaper_cut_depth(tenon_length),
-            :style => shaper_style_string(:pocket_cut)),
+            shaper_cut_attributes(:pocket_cut)...),
         elt("rect",
             :x => svgval(stock_i / 2 - tenon_i / 2),
             :y => svgval(stock_j / 2 - tenon_j / 2),
@@ -42,12 +42,12 @@ function tenon(tenon_length, cutter_diameter,
             :height => svgval(tenon_j),
             :rx => svgval(cutter_diameter / 2),
             :ry => svgval(cutter_diameter / 2),
-            :style => shaper_style_string(:outside_cut)),
+            shaper_cut_attributes(:outside_cut)...),
         elt("rect",
             :x => 0,
             :y => 0,
             :width => svgval(stock_i),
             :height => svgval(stock_j),
-            :style => shaper_style_string(:guide_line)))
+            shaper_cut_attributes(:guide_line)...))
 end
 

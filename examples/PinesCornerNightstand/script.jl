@@ -52,7 +52,7 @@ function inset(t::Triangle, inset)
              intersetction(edge31, edge23))
 end
 
-function svg(t::Triangle, style)
+function svg(t::Triangle, attributes...)
     elt("g",
         :class => "Triangle",
         elt("path",
@@ -61,7 +61,7 @@ function svg(t::Triangle, style)
                 [ "L", t.point2 ],
                 [ "L", t.point3 ],
                 "z"),
-            :style => style))
+            attributes...))
 end
 
 ################################################################################
@@ -256,9 +256,7 @@ end
 function top_outline(nsm::NightstandModel)
     z = zero(nsm.nightstand_height)
     corner_radius = nsm.leg_inset
-    leg_rect_args = [
-        :style => shaper_style_string(:guide_line)
-    ]
+    leg_rect_args = shaper_cut_attributes(:guide_line)
     elt("svg",
         namespace_attributes()...,
         # User space (0, 0) is the right angle of the abstract
@@ -272,8 +270,7 @@ function top_outline(nsm::NightstandModel)
             # Invert Y axis for conventional coordinate system:
             :transform => "translate(0, $(svgval(nsm.triangle_leg_distance))) scale(1 -1)",
             elt("path",
-                :style => shaper_style_string(:outside_cut),
-                # :style => "fill: none; stroke: green; stroke-width: 5px; vector-effect: non-scaling-stroke",
+                shaper_cut_attributes(:outside_cut)...,
                 :d => pathd(
                     let
                         c = center(nsm.imaginary_right_angle_leg)
@@ -318,15 +315,15 @@ function top_outline(nsm::NightstandModel)
                                 ]
                     end...)),
             elt("path",
-                :style => shaper_style_string(:guide_line),
-                 :d => pathd(
+                shaper_cut_attributes(:guide_line)...,
+                :d => pathd(
                     [ "M", center(nsm.leg1)... ],
                     [ "L", center(nsm.imaginary_right_angle_leg)... ],
                     [ "L", center(nsm.leg2)... ],
                     [ "L", center(nsm.leg1)... ])),
-            svg(nsm.perimeter, shaper_style_string(:guide_line)),
+            svg(nsm.perimeter, shaper_cut_attributes(:guide_line)...),
             svg(nsm.inset_triangle,
-                shaper_style_string(:guide_line)),
+                shaper_cut_attributes(:guide_line)...),
             svg(nsm.raleg1, leg_rect_args...),
             svg(nsm.raleg2, leg_rect_args...),
             svg(nsm.leg1, leg_rect_args...),
@@ -449,12 +446,12 @@ function hinge_mortise(hinge::Hinge)
                             [ "v", hinge.width ],
                             [ "h", - hinge.length ],
                             "z"),
-                :style => shaper_style_string(:pocket_cut),
+                shaper_cut_attributes(:pocket_cut)...,
                 shaper_cut_depth(hinge.leaf_thickness)),
             elt("path",
                 :d => pathd([ "M", 0u"inch", center_y ],
                             [ "h", hinge.length ]),
-                :style => shaper_style_string(:guide_line)),
+                shaper_cut_attributes(:guide_line)...),
             custom_anchor(center_x, center_y),
             center_mark(hinge.screw_hole_center_from_end,
                         center_y - hinge.screw_hole_center_from_axis),

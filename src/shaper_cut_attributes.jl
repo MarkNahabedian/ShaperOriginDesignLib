@@ -2,61 +2,54 @@
 
 using DataStructures: OrderedDict
 
-export shaper_cut_attributes, shaper_style_string, shaper_cut_depth
+export shaper_cut_attributes, shaper_cut_depth
 
-shaper_cut_attributes = Dict(
-    :inside_cut => OrderedDict(
-	"fill" => "white",
-	"stroke" => "black",
-	"stroke-width" => "1px",
-	"opacity" => "1.0",
-        "vector-effect" => "non-scaling-stroke"
+SHAPER_CUT_ATTRIBUTES = Dict(
+    :inside_cut => (
+	Symbol("fill") => "white",
+	Symbol("stroke") => "black",
+	Symbol("stroke-width") => "1px",
+	Symbol("opacity") => "1.0",
+        Symbol("vector-effect") => "non-scaling-stroke"
     ),
-    :outside_cut => OrderedDict(
-	"fill" => "black",
-	"stroke" => "black",
-	"stroke-width" => "1px",
-	"opacity" => "1.0",
-        "vector-effect" => "non-scaling-stroke"
+    :outside_cut => (
+	Symbol("fill") => "black",
+	Symbol("stroke") => "black",
+	Symbol("stroke-width") => "1px",
+	Symbol("opacity") => "1.0",
+        Symbol("vector-effect") => "non-scaling-stroke"
     ),
-    :on_line_cut => OrderedDict(
-	"fill" => "none",
-	"stroke" => "rgb(70 70 70)",     # "gray"
-	"stroke-width" => "1px",
-	"opacity" => "1.0",
-        "vector-effect" => "non-scaling-stroke"
+    :on_line_cut => (
+	Symbol("fill") => "none",
+	Symbol("stroke") => "rgb(70 70 70)",     # "gray"
+	Symbol("stroke-width") => "1px",
+	Symbol("opacity") => "1.0",
+        Symbol("vector-effect") => "non-scaling-stroke"
     ),
-    :pocket_cut => OrderedDict(
-	"fill" => "rgb(175 175 175)",       # "gray"
-	"stroke" => "none",
-	"opacity" => "1.0",
-        "vector-effect" => "non-scaling-stroke"
+    :pocket_cut => (
+	Symbol("fill") => "rgb(175 175 175)",       # "gray"
+	Symbol("stroke") => "none",
+	Symbol("opacity") => "1.0",
+        Symbol("vector-effect") => "non-scaling-stroke"
     ),
-    :guide_line => OrderedDict(
-	"fill" => "none",
-	"stroke" => "blue",
-	"stroke-width" => "1px",
-	"opacity" => "1.0",
-        "vector-effect" => "non-scaling-stroke"
+    :guide_line => (
+	Symbol("fill") => "none",
+	Symbol("stroke") => "blue",
+	Symbol("stroke-width") => "1px",
+	Symbol("opacity") => "1.0",
+        Symbol("vector-effect") => "non-scaling-stroke"
     )
 )
 
 
 """
-    shaper_style_string(cut_type::Symbol)::String
+    shaper_cut_attributes(cut_type::Symbol)
 
-Returns a String to be used as the value of the `style` attribute of
-an SVG element to inform Shaper Origin of the cut type.
+Returns a tuple of pairs of XML attribute/value Pairs descreibing the
+specified Shaper Origin cut type.
 """
-function shaper_style_string(cut_type::Symbol)
-    io = IOBuffer()
-    for (css, value) in shaper_cut_attributes[cut_type]
-        if position(io) > 0
-            write(io, " ")
-        end
-        write(io, "$css: $value;")
-    end
-    String(take!(io))
+function shaper_cut_attributes(cut_type::Symbol)
+    SHAPER_CUT_ATTRIBUTES[cut_type]
 end
 
 
