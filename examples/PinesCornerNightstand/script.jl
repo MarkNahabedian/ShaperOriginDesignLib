@@ -258,6 +258,7 @@ function top_outline(nsm::NightstandModel)
     corner_radius = nsm.leg_inset
     leg_rect_args = shaper_cut_attributes(:guide_line)
     elt("svg",
+        :version => "1.1",
         namespace_attributes()...,
         # User space (0, 0) is the right angle of the abstract
         # bounding triangle:
@@ -389,6 +390,7 @@ let
         tenon_length = 0.75u"inch"
         tenon_size = 0.5u"inch"
         svg = elt("svg",
+                  :version => "1.1",
                   namespace_attributes()...,
                   viewport_attributes(
                       - SVG_MARGIN,
@@ -433,6 +435,7 @@ function hinge_mortise(hinge::Hinge)
     center_x = hinge.length / 2
     center_y = hinge.width / 2
     elt("svg",
+        :version => "1.1",
         namespace_attributes()...,
         viewport_attributes(
             - SVG_MARGIN,
