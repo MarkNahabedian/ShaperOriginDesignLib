@@ -20,7 +20,7 @@ using Test
         @test shaper_cut_attributes(:on_line_cut) ==
             (
 	        :fill => "none",
-	        :stroke => "rgb(70 70 70)",     # "gray"
+	        :stroke => "#464646",     # "gray"
 	        Symbol("stroke-width") => "1px",
 	        :opacity => "1.0",
                 Symbol("vector-effect") => "non-scaling-stroke"
