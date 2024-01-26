@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:shaper="http://www.shapertools.com/namespaces/shaper" viewBox="-1 -1 18.5 18.5" width="18.5in" height="18.5in">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:shaper="http://www.shapertools.com/namespaces/shaper" viewBox="-1 -1 18.5 18.5" width="18.5in" height="18.5in">
   <g transform="translate(0, 16.5) scale(1 -1)">
     <path fill="black" stroke="black" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke" d="M 0.000000 12.585786 L 0.000000 1.750000 A 1.750000 1.750000 0 0 1 1.750000 0.000000 L 12.585786 0.000000 C 14.085786 0.000000 14.792893 1.707107 13.292893 3.207107 L 3.207107 13.292893 C 1.707107 14.792893 0.000000 14.085786 0.000000 12.585786"/>
     <path fill="none" stroke="blue" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke" d="M 11.835786 1.750000 L 1.750000 1.750000 L 1.750000 11.835786 L 11.835786 1.750000"/>
@@ -21,19 +21,19 @@
       <rect x="1.0" y="11.085786437626904" width="1.5" height="1.5" fill="none" stroke="blue" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
     </g>
     <g class="center_mark">
-      <path d="M 3.150000 1.750000 L 3.250000 1.750000 L 3.250000 1.650000" fill="none" stroke="rgb(70 70 70)" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
+      <path d="M 3.150000 1.750000 L 3.250000 1.750000 L 3.250000 1.650000" fill="none" stroke="#464646" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
       <circle cx="3.25in" cy="1.75in" r="0.1in" fill="none" stroke="blue" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
     </g>
     <g class="center_mark">
-      <path d="M 1.650000 3.250000 L 1.750000 3.250000 L 1.750000 3.150000" fill="none" stroke="rgb(70 70 70)" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
+      <path d="M 1.650000 3.250000 L 1.750000 3.250000 L 1.750000 3.150000" fill="none" stroke="#464646" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
       <circle cx="1.75in" cy="3.25in" r="0.1in" fill="none" stroke="blue" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
     </g>
     <g class="center_mark">
-      <path d="M 11.735786 1.750000 L 11.835786 1.750000 L 11.835786 1.650000" fill="none" stroke="rgb(70 70 70)" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
+      <path d="M 11.735786 1.750000 L 11.835786 1.750000 L 11.835786 1.650000" fill="none" stroke="#464646" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
       <circle cx="11.835786437626904in" cy="1.75in" r="0.1in" fill="none" stroke="blue" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
     </g>
     <g class="center_mark">
-      <path d="M 1.650000 11.835786 L 1.750000 11.835786 L 1.750000 11.735786" fill="none" stroke="rgb(70 70 70)" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
+      <path d="M 1.650000 11.835786 L 1.750000 11.835786 L 1.750000 11.735786" fill="none" stroke="#464646" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
       <circle cx="1.75in" cy="11.835786437626904in" r="0.1in" fill="none" stroke="blue" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
     </g>
   </g>
