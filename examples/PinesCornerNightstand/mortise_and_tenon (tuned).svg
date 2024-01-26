@@ -11,17 +11,20 @@
           shaper:cutDepth="0.75"
           fill="#AFAFAF"
           width="144" height="144"
+          opacity="1.0"
           vector-effect="non-scaling-stroke">
     </rect>
     <path stroke="#000000"
           stroke-width="72"
           d="M117,108h18c4.971,0,9,4.029,9,9v18c0,4.971-4.029,9-9,9h-18 c-4.971,0-9-4.029-9-9v-18C108,112.029,112.029,108,117,108z"
+          opacity="1.0"
           vector-effect="non-scaling-stroke"/>
     <rect x="72" y="72"
           fill="none"
           stroke="#0000FF"
           stroke-width="72"
           width="108" height="108"
+          opacity="1.0"
           vector-effect="non-scaling-stroke"/>
   </g>
 </svg>
