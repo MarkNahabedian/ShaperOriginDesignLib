@@ -11,6 +11,7 @@
           shaper:cutDepth="0.75"
           fill="#AFAFAF"
           width="144" height="144"
+          stroke="none"
           opacity="1.0"
           vector-effect="non-scaling-stroke">
     </rect>
