@@ -5,6 +5,10 @@ using DataStructures: OrderedDict
 export shaper_cut_attributes, shaper_cut_depth
 
 SHAPER_CUT_ATTRIBUTES = Dict(
+    #= NOTE:
+    Shaper Origin doesn't understand color specifications like
+    "rgb(...)"  Only use hex values or standard color names.
+    =#
     :inside_cut => (
 	Symbol("fill") => "white",
 	Symbol("stroke") => "black",
@@ -21,7 +25,7 @@ SHAPER_CUT_ATTRIBUTES = Dict(
     ),
     :on_line_cut => (
 	Symbol("fill") => "none",
-	Symbol("stroke") => "rgb(70 70 70)",     # "gray"
+	Symbol("stroke") => "#464646",     # "gray"
 	Symbol("stroke-width") => "1px",
 	Symbol("opacity") => "1.0",
         Symbol("vector-effect") => "non-scaling-stroke"
