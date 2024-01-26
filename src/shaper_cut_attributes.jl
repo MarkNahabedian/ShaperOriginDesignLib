@@ -31,7 +31,7 @@ SHAPER_CUT_ATTRIBUTES = Dict(
         Symbol("vector-effect") => "non-scaling-stroke"
     ),
     :pocket_cut => (
-	Symbol("fill") => "rgb(175 175 175)",       # "gray"
+	Symbol("fill") => "#afafaf",       # "gray"
 	Symbol("stroke") => "none",
 	Symbol("opacity") => "1.0",
         Symbol("vector-effect") => "non-scaling-stroke"
