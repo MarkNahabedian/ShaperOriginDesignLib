@@ -1,5 +1,5 @@
 using Pkg
-Pkg.activate("../..")
+Pkg.activate(Base.current_project())
 
 using Markdown
 using InteractiveUtils
@@ -378,9 +378,11 @@ NIGHTSTAND_MODEL =
                     tenon_length = 0.75u"inch"
                     )
 
-write_measurement_file(NIGHTSTAND_MODEL, "stock.txt")
+write_measurement_file(NIGHTSTAND_MODEL,
+                       joinpath(@__DIR__, "stock.txt"))
 
-write_top_outline_file(NIGHTSTAND_MODEL, "top.svg")
+write_top_outline_file(NIGHTSTAND_MODEL,
+                       joinpath(@__DIR__, "top.svg"))
 
 
 let
@@ -400,7 +402,7 @@ let
                   tenon(tenon_length, CUTTER_DIAMETER,
                         tenon_size, tenon_size,
                         lt, lt))
-        XML.write("mortise_and_tenon.svg", svg)
+        XML.write(joinpath(@__DIR__, "mortise_and_tenon.svg"), svg)
     end
 end
 
@@ -489,7 +491,7 @@ LEG_HINGE =
 let
     with_svg_user_length_unit(u"inch") do
         svg = hinge_mortise(LEG_HINGE)
-        XML.write("hinge_mortise.svg", svg)
+        XML.write(joinpath(@__DIR__, "hinge_mortise.svg"), svg)
     end
 end
 
