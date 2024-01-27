@@ -4,4 +4,5 @@
     <rect x="0.5" y="0.5" width="0.5" height="0.5" rx="0.125" ry="0.125" fill="black" stroke="black" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
     <rect x="0" y="0" width="1.5" height="1.5" fill="none" stroke="blue" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
   </g>
+  <path class="custom_anchor" style="fill:red; stroke=none;" d="M 0 1.500000 h -0.250000 L 0 2.000000 z"/>
 </svg>

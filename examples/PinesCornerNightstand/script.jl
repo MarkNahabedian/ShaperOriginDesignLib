@@ -401,7 +401,10 @@ let
                       lt + SVG_MARGIN)...,
                   tenon(tenon_length, CUTTER_DIAMETER,
                         tenon_size, tenon_size,
-                        lt, lt))
+                        lt, lt),
+                  custom_anchor(0u"inch", lt;
+                                xdirection=-1,
+                                ydirection=1))
         XML.write(joinpath(@__DIR__, "mortise_and_tenon.svg"), svg)
     end
 end
