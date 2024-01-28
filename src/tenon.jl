@@ -26,15 +26,50 @@ function tenon(tenon_length, cutter_diameter,
                extra=cutter_diameter)
     @assert cutter_diameter <=  tenon_i
     @assert cutter_diameter <= tenon_j
+    # Should 0, 0 be at the top left or bottom left?
+    # Should the custom anchor be at the top left or bottom left?
+    # It's more accurate to define the workspace grid by touching off
+    # on the stock than on the partially mutilated edge of the Shaper
+    # Workstation's spoilboard.  
+    # Therefore, we should put the custom anchor at the bottom left.
+    waste_i = (stock_i - tenon_i) / 2
+    waste_j = (stock_j - tenon_j) / 2
     elt("g",
         :class => "tenon",
-        elt("rect",
-            :x => svgval(- extra),
-            :y => svgval(- extra),
-            :width => svgval(stock_i + 2 * extra),
-            :height => svgval(stock_j + 2 * extra),
-            shaper_cut_depth(tenon_length),
-            shaper_cut_attributes(:pocket_cut)...),
+        elt("g", :class => "pockets",
+            # When the pocket is expressed as a single rectangle,
+            # Shaper Origin doesn't protect the outside cut of the
+            # tenon itself.  Instead, we define four pockets, one for
+            # each outside edge of the outside cut.
+            elt("rect",
+                :x => svgval(- cutter_diameter / 2),
+                :y => svgval(- cutter_diameter / 2),
+                :width => svgval(stock_i + cutter_diameter),
+                :height => svgval(waste_j),
+                shaper_cut_depth(tenon_length),
+                shaper_cut_attributes(:pocket_cut)...),
+
+            elt("rect",
+                :x => svgval(- cutter_diameter / 2),
+                :y => svgval(stock_j - waste_j + cutter_diameter / 2),
+                :width => svgval(stock_i + cutter_diameter),
+                :height => svgval(waste_j),
+                shaper_cut_depth(tenon_length),
+                shaper_cut_attributes(:pocket_cut)...),
+            elt("rect",
+                :x => svgval(- cutter_diameter / 2),
+                :y => svgval(waste_j - cutter_diameter / 2),
+                :width => svgval(waste_i),
+                :height => svgval(tenon_j + cutter_diameter),
+                shaper_cut_depth(tenon_length),
+                shaper_cut_attributes(:pocket_cut)...),
+            elt("rect",
+                :x => svgval(waste_i + tenon_i + cutter_diameter / 2),
+                :y => svgval(waste_j - cutter_diameter / 2),
+                :width => svgval(waste_i),
+                :height => svgval(tenon_j + cutter_diameter),
+                shaper_cut_depth(tenon_length),
+                shaper_cut_attributes(:pocket_cut)...)),
         elt("rect",
             :x => svgval(stock_i / 2 - tenon_i / 2),
             :y => svgval(stock_j / 2 - tenon_j / 2),
