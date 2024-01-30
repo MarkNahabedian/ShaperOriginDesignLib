@@ -36,6 +36,13 @@ function tenon(tenon_length, cutter_diameter,
     waste_j = (stock_j - tenon_j) / 2
     elt("g",
         :class => "tenon",
+        XML.Comment(
+            " mortise and tenon:\n\t" *
+            "tenon: $tenon_i by $tenon_j\n\t" *
+            "stock: $stock_i by $stock_j\n\t" *
+            "tenon length: $tenon_length\n\t" *
+            "cutter diameter: $cutter_diameter\n\t" *
+            "extra: $extra\n"),
         elt("g", :class => "pockets",
             # When the pocket is expressed as a single rectangle,
             # Shaper Origin doesn't protect the outside cut of the
