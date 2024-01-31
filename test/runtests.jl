@@ -109,3 +109,5 @@ end
     end
 end
 
+include("test_rectangles.jl")
+

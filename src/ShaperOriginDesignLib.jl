@@ -23,6 +23,7 @@ include("svg_path.jl")
 include("custom_anchor.jl")
 include("point.jl")
 include("line.jl")
+include("rectangle.jl")
 include("tenon.jl")
 
 # Must be called after all methods of svg_pathd have been defined:
