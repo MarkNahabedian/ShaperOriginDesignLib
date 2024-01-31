@@ -2,7 +2,7 @@
   <g>
     <path d="M 0 0 h 0.764000 v 1.000000 h -0.764000 z" fill="#afafaf" stroke="none" opacity="1.0" vector-effect="non-scaling-stroke" shaper:cutDepth="0.03"/>
     <path d="M 0 0.500000 h 0.764000" fill="none" stroke="blue" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
-    <path class="custom_anchor" style="fill:red; stroke=none;" d="M 0.382000 0.500000 h 0.250000 L 0.382000 0.000000 z"/>
+    <path class="custom_anchor" fill="red" stroke="none" opacity="0.5" d="M 0.382000 0.500000 h 0.250000 L 0.382000 0.000000 z"/>
     <g class="center_mark">
       <path d="M -0.003000 0.205000 L 0.097000 0.205000 L 0.097000 0.105000" fill="none" stroke="#464646" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
       <circle cx="0.097in" cy="0.20499999999999996in" r="0.1in" fill="none" stroke="blue" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>

@@ -460,6 +460,10 @@ function hinge_mortise(hinge::Hinge)
                 :d => pathd([ "M", 0u"inch", center_y ],
                             [ "h", hinge.length ]),
                 shaper_cut_attributes(:guide_line)...),
+            # ***** MAYBE THE CUSTOM ANCHOR SHOULD BE AT THE AXIS OF
+            # ***** THE HINGE.  GRID TOUCH OFF CAN BE ON THE "INSIDE"
+            # ***** EDGE OF THE FIRST PIECE OF STOCK BEFORE THE SECOND
+            # ***** IN MOUNTED.  MAYBE AT THE CENTER X AS WELL.
             custom_anchor(center_x, center_y),
             center_mark(hinge.screw_hole_center_from_end,
                         center_y - hinge.screw_hole_center_from_axis),
