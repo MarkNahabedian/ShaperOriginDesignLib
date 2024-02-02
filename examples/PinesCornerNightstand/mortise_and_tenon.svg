@@ -10,8 +10,8 @@
     <g class="pockets">
       <rect x="-0.125" y="-0.125" width="1.75" height="0.5625" shaper:cutDepth="0.75" fill="#afafaf" stroke="none" opacity="1.0" vector-effect="non-scaling-stroke"/>
       <rect x="-0.125" y="1.0625" width="1.75" height="0.5625" shaper:cutDepth="0.75" fill="#afafaf" stroke="none" opacity="1.0" vector-effect="non-scaling-stroke"/>
-      <rect x="-0.125" y="0.4375" width="0.5625" height="0.625" shaper:cutDepth="0.75" fill="#afafaf" stroke="none" opacity="1.0" vector-effect="non-scaling-stroke"/>
-      <rect x="1.0625" y="0.4375" width="0.5625" height="0.625" shaper:cutDepth="0.75" fill="#afafaf" stroke="none" opacity="1.0" vector-effect="non-scaling-stroke"/>
+      <rect x="-0.125" y="0.25" width="0.5625" height="1.0" shaper:cutDepth="0.75" fill="#afafaf" stroke="none" opacity="1.0" vector-effect="non-scaling-stroke"/>
+      <rect x="1.0625" y="0.25" width="0.5625" height="1.0" shaper:cutDepth="0.75" fill="#afafaf" stroke="none" opacity="1.0" vector-effect="non-scaling-stroke"/>
     </g>
     <rect x="0.5" y="0.5" width="0.5" height="0.5" rx="0.125" ry="0.125" shaper:cutDepth="0.75" fill="black" stroke="black" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
     <!-- Guide line that's a cutter diameter outside of the tenon's outside cut: -->

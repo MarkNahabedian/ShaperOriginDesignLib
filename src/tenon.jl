@@ -45,6 +45,7 @@ function tenon(tenon_length, cutter_diameter,
     pocket_outer_bounds = enlarge(stock_rect,
                                   0.5 * cutter_diameter,
                                   0.5 * cutter_diameter)
+    pocket_overlap = 0.75 * cutter_diameter
     elt("g",
         :class => "tenon",
         XML.Comment(
@@ -81,18 +82,18 @@ function tenon(tenon_length, cutter_diameter,
                 svg_attributes(
                     Rectangle(;
                               left = left(pocket_outer_bounds),
-                              top = top(tenon_safty),
+                              top = top(tenon_safty) - pocket_overlap,
                               right = left(tenon_safty),
-                              bottom = bottom(tenon_safty)))...,
+                              bottom = bottom(tenon_safty) + pocket_overlap))...,
                 shaper_cut_depth(tenon_length),
                 shaper_cut_attributes(:pocket_cut)...),
             elt("rect",
                 svg_attributes(
                     Rectangle(;
                               left = right(tenon_safty),
-                              top = top(tenon_safty),
+                              top = top(tenon_safty) - pocket_overlap,
                               right = right(pocket_outer_bounds),
-                              bottom = bottom(tenon_safty)))...,
+                              bottom = bottom(tenon_safty) + pocket_overlap))...,
                 shaper_cut_depth(tenon_length),
                 shaper_cut_attributes(:pocket_cut)...)),
         elt("rect",
