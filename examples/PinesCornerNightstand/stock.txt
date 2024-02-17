@@ -2,15 +2,15 @@ nightstand_height	28 inch
 top_thickness	0.75 inch
 triangle_leg_distance	16.5 inch 	 max 23.335 inch
 leg_inset	1 inch
-leg_thickness	1.5 inch
+leg_thickness	1.42 inch
 tenon_length	0.75 inch
 hypotenuse	23.335 inch 	max 33.0 inch
 
 Leg center positions:
-	11.836	1.750
-	3.250	1.750
-	1.750	3.250
-	1.750	11.836
+	11.956	1.710
+	3.130	1.710
+	1.710	3.130
+	1.710	11.956
 
 4 legs, 27.25 inch each.
-4 stringers, 8.585786437626904 inch each.
+4 stringers, 8.905786437626906 inch each.

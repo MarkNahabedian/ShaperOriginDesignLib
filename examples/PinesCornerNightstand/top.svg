@@ -1,7 +1,7 @@
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:shaper="http://www.shapertools.com/namespaces/shaper" viewBox="-1 -1 18.5 18.5" width="18.5in" height="18.5in">
   <g transform="translate(0, 16.5) scale(1 -1)">
-    <path fill="black" stroke="black" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke" d="M 0.000000 12.585786 L 0.000000 1.750000 A 1.750000 1.750000 0 0 1 1.750000 0.000000 L 12.585786 0.000000 C 14.085786 0.000000 14.792893 1.707107 13.292893 3.207107 L 3.207107 13.292893 C 1.707107 14.792893 0.000000 14.085786 0.000000 12.585786"/>
-    <path fill="none" stroke="blue" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke" d="M 11.835786 1.750000 L 1.750000 1.750000 L 1.750000 11.835786 L 11.835786 1.750000"/>
+    <path fill="black" stroke="black" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke" d="M 0.000000 12.665786 L 0.000000 1.710000 A 1.710000 1.710000 0 0 1 1.710000 0.000000 L 12.665786 0.000000 C 14.165786 0.000000 14.872893 1.627107 13.372893 3.127107 L 3.127107 13.372893 C 1.627107 14.872893 0.000000 14.165786 0.000000 12.665786"/>
+    <path fill="none" stroke="blue" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke" d="M 11.955786 1.710000 L 1.710000 1.710000 L 1.710000 11.955786 L 11.955786 1.710000"/>
     <g class="Triangle">
       <path d="M 0 0 L 0 16.500000 L 16.500000 0 z" fill="none" stroke="blue" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
     </g>
@@ -9,32 +9,33 @@
       <path d="M 1.000000 1.000000 L 1.000000 14.085786 L 14.085786 1.000000 z" fill="none" stroke="blue" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
     </g>
     <g class="Leg">
-      <rect x="2.5" y="1.0" width="1.5" height="1.5" fill="none" stroke="blue" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
+      <rect x="2.42" y="1.0" width="1.42" height="1.42" fill="none" stroke="blue" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
     </g>
     <g class="Leg">
-      <rect x="1.0" y="2.5" width="1.5" height="1.5" fill="none" stroke="blue" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
+      <rect x="1.0" y="2.42" width="1.42" height="1.42" fill="none" stroke="blue" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
     </g>
     <g class="Leg">
-      <rect x="11.085786437626904" y="1.0" width="1.5" height="1.5" fill="none" stroke="blue" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
+      <rect x="11.245786437626906" y="1.0" width="1.42" height="1.42" fill="none" stroke="blue" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
     </g>
     <g class="Leg">
-      <rect x="1.0" y="11.085786437626904" width="1.5" height="1.5" fill="none" stroke="blue" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
+      <rect x="1.0" y="11.245786437626906" width="1.42" height="1.42" fill="none" stroke="blue" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
     </g>
     <g class="center_mark">
-      <path d="M 3.150000 1.750000 L 3.250000 1.750000 L 3.250000 1.650000" fill="none" stroke="#464646" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
-      <circle cx="3.25in" cy="1.75in" r="0.1in" fill="none" stroke="blue" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
+      <path d="M 3.030000 1.710000 L 3.130000 1.710000 L 3.130000 1.610000" fill="none" stroke="#464646" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
+      <circle cx="3.13in" cy="1.71in" r="0.1in" fill="none" stroke="blue" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
     </g>
     <g class="center_mark">
-      <path d="M 1.650000 3.250000 L 1.750000 3.250000 L 1.750000 3.150000" fill="none" stroke="#464646" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
-      <circle cx="1.75in" cy="3.25in" r="0.1in" fill="none" stroke="blue" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
+      <path d="M 1.610000 3.130000 L 1.710000 3.130000 L 1.710000 3.030000" fill="none" stroke="#464646" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
+      <circle cx="1.71in" cy="3.13in" r="0.1in" fill="none" stroke="blue" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
     </g>
     <g class="center_mark">
-      <path d="M 11.735786 1.750000 L 11.835786 1.750000 L 11.835786 1.650000" fill="none" stroke="#464646" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
-      <circle cx="11.835786437626904in" cy="1.75in" r="0.1in" fill="none" stroke="blue" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
+      <path d="M 11.855786 1.710000 L 11.955786 1.710000 L 11.955786 1.610000" fill="none" stroke="#464646" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
+      <circle cx="11.955786437626905in" cy="1.71in" r="0.1in" fill="none" stroke="blue" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
     </g>
     <g class="center_mark">
-      <path d="M 1.650000 11.835786 L 1.750000 11.835786 L 1.750000 11.735786" fill="none" stroke="#464646" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
-      <circle cx="1.75in" cy="11.835786437626904in" r="0.1in" fill="none" stroke="blue" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
+      <path d="M 1.610000 11.955786 L 1.710000 11.955786 L 1.710000 11.855786" fill="none" stroke="#464646" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
+      <circle cx="1.71in" cy="11.955786437626905in" r="0.1in" fill="none" stroke="blue" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
     </g>
+    <path class="custom_anchor" fill="red" stroke="none" opacity="0.5" d="M -0.150000 -0.050000 h 2.750000 L -0.150000 0.450000 z"/>
   </g>
 </svg>

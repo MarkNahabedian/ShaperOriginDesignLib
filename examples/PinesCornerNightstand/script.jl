@@ -157,6 +157,9 @@ struct NightstandModel
     # the edge of the square crosssection of a leg:
     leg_thickness::Unitful.Length
     tenon_length::Unitful.Length
+    # Offset of custom origin from the edges we want to cut:
+    table_top_x_offset::Unitful.Length
+    table_top_y_offset::Unitful.Length
 
     # Derived properties:
 
@@ -178,6 +181,8 @@ struct NightstandModel
     function NightstandModel(;
                              nightstand_height,
                              top_thickness,
+                             table_top_x_offset,
+                             table_top_y_offset,
                              triangle_leg_distance,
                              leg_inset,
                              leg_thickness,
@@ -205,6 +210,8 @@ struct NightstandModel
             leg_inset,
             leg_thickness,
             tenon_length,
+            table_top_x_offset,
+            table_top_y_offset,
             # perimeter:
             perimeter, inset_triangle,
             imaginary_right_angle_leg,
@@ -332,7 +339,11 @@ function top_outline(nsm::NightstandModel)
             center_mark(center(nsm.raleg1)...),
             center_mark(center(nsm.raleg2)...),
             center_mark(center(nsm.leg1)...),
-            center_mark(center(nsm.leg2)...)
+            center_mark(center(nsm.leg2)...),
+            custom_anchor(nsm.table_top_x_offset,
+                          nsm.table_top_y_offset;
+                          xdirection=11,
+                          ydirection=1)
             ))
 end
 
@@ -364,9 +375,13 @@ end
 
 NIGHTSTAND_MODEL =
     NightstandModel(;
-                    # The bed is 27" high, so the table should be about that height
+                    # The bed is 27" high, so the table should be
+                    # about that height
                     nightstand_height = 28u"inch",
                     top_thickness = 0.75u"inch",
+                    table_top_x_offset = -0.15u"inch",  # based on depth of groove
+                    table_top_y_offset = -0.05u"inch",  # remove finish
+
                     # Maximum hypotenuse length is 32"
                     # Why didn't I measure the distance of the bed from the wall?
 
@@ -374,7 +389,7 @@ NIGHTSTAND_MODEL =
                     # isocelese triangle of the tabletop:
                     triangle_leg_distance = 16.5u"inch",
                     leg_inset = 1u"inch",
-                    leg_thickness = 1.5u"inch",
+                    leg_thickness = 1.42u"inch",
                     tenon_length = 0.75u"inch"
                     )
 
