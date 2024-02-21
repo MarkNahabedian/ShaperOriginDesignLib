@@ -19,5 +19,5 @@
     <!-- Outside edge of the stock: -->
     <rect x="0.0" y="0.0" width="1.42" height="1.42" fill="none" stroke="blue" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
   </g>
-  <path class="custom_anchor" fill="red" stroke="none" opacity="0.5" d="M 0 1.420000 h -0.250000 L 0 1.920000 z"/>
+  <path class="custom_anchor" fill="red" stroke="none" opacity="0.5" d="M 0 1.420000 h 0.250000 L 0 1.920000 z"/>
 </svg>

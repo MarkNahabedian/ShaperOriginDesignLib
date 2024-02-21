@@ -36,6 +36,6 @@
       <path d="M 1.610000 11.955786 L 1.710000 11.955786 L 1.710000 11.855786" fill="none" stroke="#464646" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
       <circle cx="1.71in" cy="11.955786437626905in" r="0.1in" fill="none" stroke="blue" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
     </g>
-    <path class="custom_anchor" fill="red" stroke="none" opacity="0.5" d="M -0.150000 -0.050000 h 2.750000 L -0.150000 0.450000 z"/>
+    <path class="custom_anchor" fill="red" stroke="none" opacity="0.5" d="M -0.150000 -0.050000 h 0.250000 L -0.150000 0.450000 z"/>
   </g>
 </svg>

@@ -341,9 +341,7 @@ function top_outline(nsm::NightstandModel)
             center_mark(center(nsm.leg1)...),
             center_mark(center(nsm.leg2)...),
             custom_anchor(nsm.table_top_x_offset,
-                          nsm.table_top_y_offset;
-                          xdirection=11,
-                          ydirection=1)
+                          nsm.table_top_y_offset)
             ))
 end
 
@@ -417,9 +415,7 @@ let
                   tenon(tenon_length, CUTTER_DIAMETER,
                         tenon_size, tenon_size,
                         lt, lt),
-                  custom_anchor(0u"inch", lt;
-                                xdirection=-1,
-                                ydirection=1))
+                  custom_anchor(0u"inch", lt;))
         XML.write(joinpath(@__DIR__, "mortise_and_tenon.svg"), svg)
     end
 end
