@@ -3,17 +3,17 @@
     <!-- mortise and tenon:
 	tenon: 0.5 inch by 0.5 inch
 	stock: 1.42 inch by 1.42 inch
-	tenon length: 0.75 inch
+	tenon length: 0.5783567811865469 inch
 	cutter diameter: 0.25 inch
 	extra: 0.25 inch
 -->
     <g class="pockets">
-      <rect x="-0.125" y="-0.125" width="1.67" height="0.5225" shaper:cutDepth="0.75" fill="#afafaf" stroke="none" opacity="1.0" vector-effect="non-scaling-stroke"/>
-      <rect x="-0.125" y="1.0225" width="1.67" height="0.5225" shaper:cutDepth="0.75" fill="#afafaf" stroke="none" opacity="1.0" vector-effect="non-scaling-stroke"/>
-      <rect x="-0.125" y="0.20999999999999996" width="0.5225" height="1.0" shaper:cutDepth="0.75" fill="#afafaf" stroke="none" opacity="1.0" vector-effect="non-scaling-stroke"/>
-      <rect x="1.0225" y="0.20999999999999996" width="0.5225" height="1.0" shaper:cutDepth="0.75" fill="#afafaf" stroke="none" opacity="1.0" vector-effect="non-scaling-stroke"/>
+      <rect x="-0.125" y="-0.125" width="1.67" height="0.5225" shaper:cutDepth="0.5783567811865469" fill="#afafaf" stroke="none" opacity="1.0" vector-effect="non-scaling-stroke"/>
+      <rect x="-0.125" y="1.0225" width="1.67" height="0.5225" shaper:cutDepth="0.5783567811865469" fill="#afafaf" stroke="none" opacity="1.0" vector-effect="non-scaling-stroke"/>
+      <rect x="-0.125" y="0.20999999999999996" width="0.5225" height="1.0" shaper:cutDepth="0.5783567811865469" fill="#afafaf" stroke="none" opacity="1.0" vector-effect="non-scaling-stroke"/>
+      <rect x="1.0225" y="0.20999999999999996" width="0.5225" height="1.0" shaper:cutDepth="0.5783567811865469" fill="#afafaf" stroke="none" opacity="1.0" vector-effect="non-scaling-stroke"/>
     </g>
-    <rect x="0.45999999999999996" y="0.45999999999999996" width="0.5" height="0.5" rx="0.125" ry="0.125" shaper:cutDepth="0.75" fill="black" stroke="black" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
+    <rect x="0.45999999999999996" y="0.45999999999999996" width="0.5" height="0.5" rx="0.125" ry="0.125" shaper:cutDepth="0.5783567811865469" fill="black" stroke="black" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
     <!-- Guide line that's a cutter diameter outside of the tenon's outside cut: -->
     <rect x="0.39749999999999996" y="0.39749999999999996" width="0.625" height="0.625" rx="0.125" ry="0.125" fill="none" stroke="blue" stroke-width="1px" opacity="1.0" vector-effect="non-scaling-stroke"/>
     <!-- Outside edge of the stock: -->

@@ -398,11 +398,31 @@ write_top_outline_file(NIGHTSTAND_MODEL,
                        joinpath(@__DIR__, "top.svg"))
 
 
+CORRECTED_TENON_LENGTH = let
+    # I cut the stringers to length using a crappy plastic miter box.
+    # The ends wound up not being square to the sides and not being
+    # flat.  I squared up the ends of the stringers using the miter
+    # saw at the MIT Hobby Shop.  As a result the stock that has been
+    # cut for the striingers is shorter than intended.
+    stringer_stock_length = (8 + 9/16)u"inch"
+    d1 = distance(center(NIGHTSTAND_MODEL.raleg1)...,
+                  center(NIGHTSTAND_MODEL.leg1)...)
+    d2 = distance(center(NIGHTSTAND_MODEL.raleg2)...,
+                  center(NIGHTSTAND_MODEL.leg2)...)
+    @assert d1 == d2
+    stringer_between_legs = d1 - NIGHTSTAND_MODEL.leg_thickness
+    new_tenon_length = (stringer_stock_length - stringer_between_legs) / 2
+    open("corrected_tenon_length.txt", "w") do io
+        println(io, "currected tenon length: ", new_tenon_length)
+    end
+    new_tenon_length
+end
+
 let
     with_svg_user_length_unit(u"inch") do
         lt = NIGHTSTAND_MODEL.leg_thickness
         CUTTER_DIAMETER = 0.25u"inch"
-        tenon_length = 0.75u"inch"
+        tenon_length = CORRECTED_TENON_LENGTH     # 0.75u"inch"
         tenon_size = 0.5u"inch"
         svg = elt("svg",
                   :version => "1.1",
@@ -512,5 +532,4 @@ let
         XML.write(joinpath(@__DIR__, "hinge_mortise.svg"), svg)
     end
 end
-
 
