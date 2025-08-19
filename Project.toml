@@ -6,6 +6,7 @@ version = "0.2.0"
 [deps]
 DataStructures = "864edb3b-99cc-5e75-8d2d-829cb0a9cfe8"
 HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
+NahaXMLUtils = "a43006d0-e7b0-4945-abab-c94506b32220"
 OrderedCollections = "bac558e1-5e72-5ebc-8fee-abe8a469f55d"
 Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
 Unitful = "1986cc42-f94f-5a68-af5c-568840ba703d"
@@ -14,6 +15,7 @@ XML = "72c71f33-b9b6-44de-8c94-c961784809e2"
 
 [compat]
 DataStructures = "0.18"
+NahaXMLUtils = "1.0.0"
 Unitful = "1"
 UnitfulUS = "0.2"
 julia = "1"

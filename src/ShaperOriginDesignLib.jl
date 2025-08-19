@@ -4,6 +4,8 @@ using Printf
 using Unitful
 using UnitfulUS
 using XML
+using NahaXMLUtils
+using NahaXMLUtils: SVG_UNITS
 
 export SVG_NAMESPACE, SHAPER_NAMESPACE, user_units_val
 
@@ -16,7 +18,6 @@ user_units_val(n::Quantity) =
     svgval(uconvert(task_local_storage(:SVG_USER_LENGTH_UNIT), n))
 
 
-include("elt.jl")
 include("shaper_cut_attributes.jl")
 include("svg_utils.jl")
 include("svg_path.jl")
