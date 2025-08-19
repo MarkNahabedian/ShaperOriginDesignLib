@@ -7,10 +7,7 @@ using XML
 using NahaXMLUtils
 using NahaXMLUtils: SVG_UNITS
 
-export SVG_NAMESPACE, SHAPER_NAMESPACE, user_units_val
-
-SVG_NAMESPACE = "http://www.w3.org/2000/svg"
-SHAPER_NAMESPACE = "http://www.shapertools.com/namespaces/shaper"
+export SHAPER_NAMESPACE, user_units_val, SHAPER_NAMESPACE
 
 
 user_units_val(n::Number) = n
