@@ -37,7 +37,7 @@ the SVG element.
 """
 function viewport_attributes(left::Unitful.Length, top::Unitful.Length,
                              right::Unitful.Length, bottom::Unitful.Length,
-                             include_width_and_height=true)
+                             include_width_and_height::Bool = true)
     to_units = task_local_storage(:SVG_USER_LENGTH_UNIT)
     left, top, right, bottom =
         (x -> ustrip(to_units, uconvert(to_units, x))).(
@@ -47,11 +47,26 @@ function viewport_attributes(left::Unitful.Length, top::Unitful.Length,
     result = [:viewBox => "$left $top $width $height" ]
     if include_width_and_height
         ### PROBLEM: Without this, we fail to specify units for our
-        ### measurtements.
+        ### measurements.
         push!(result,
               :width => "$width$(SVG_UNITS[to_units])",
               :height => "$height$(SVG_UNITS[to_units])")
     end
+    return result
+end
+
+function viewport_attributes(left::Unitful.Length, top::Unitful.Length,
+                             right::Unitful.Length, bottom::Unitful.Length,
+                             to_units::Unitful.LengthFreeUnits)
+    left, top, right, bottom =
+        (x -> ustrip(to_units, uconvert(to_units, x))).(
+            (left, top, right, bottom))
+    width = right - left
+    height = bottom - top
+    result = [ :viewBox => "$left $top $width $height",
+               :width => "$width$(SVG_UNITS[to_units])",
+               :height => "$height$(SVG_UNITS[to_units])"
+               ]
     return result
 end
 
