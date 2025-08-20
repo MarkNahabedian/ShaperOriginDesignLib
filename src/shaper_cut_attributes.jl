@@ -13,34 +13,34 @@ SHAPER_CUT_ATTRIBUTES = Dict(
 	Symbol("fill") => "white",
 	Symbol("stroke") => "black",
 	Symbol("stroke-width") => "1px",
-	Symbol("opacity") => "1.0",
+	Symbol("opacity") => "0.5",
         Symbol("vector-effect") => "non-scaling-stroke"
     ),
     :outside_cut => (
 	Symbol("fill") => "black",
 	Symbol("stroke") => "black",
 	Symbol("stroke-width") => "1px",
-	Symbol("opacity") => "1.0",
+	Symbol("opacity") => "0.5",
         Symbol("vector-effect") => "non-scaling-stroke"
     ),
     :on_line_cut => (
 	Symbol("fill") => "none",
 	Symbol("stroke") => "#464646",     # "gray"
 	Symbol("stroke-width") => "1px",
-	Symbol("opacity") => "1.0",
+	Symbol("opacity") => "0.5",
         Symbol("vector-effect") => "non-scaling-stroke"
     ),
     :pocket_cut => (
 	Symbol("fill") => "#afafaf",       # "gray"
 	Symbol("stroke") => "none",
-	Symbol("opacity") => "1.0",
+	Symbol("opacity") => "0.5",
         Symbol("vector-effect") => "non-scaling-stroke"
     ),
     :guide_line => (
 	Symbol("fill") => "none",
 	Symbol("stroke") => "blue",
 	Symbol("stroke-width") => "1px",
-	Symbol("opacity") => "1.0",
+	Symbol("opacity") => "0.5",
         Symbol("vector-effect") => "non-scaling-stroke"
     )
 )
